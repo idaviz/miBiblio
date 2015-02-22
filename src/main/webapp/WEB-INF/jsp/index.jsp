@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="struts2, twitter, bootstrap, plugin, showcase" />
         <meta name="description" content="A Showcase for the Struts2 Bootstrap Plugin" />
-        <title>miBiblio<s:text name="showcase.version"/></title>
+        <title><s:text name="index.title" /></title>
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
@@ -45,26 +45,39 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Catálogo</a></li>
-                        <li><a href="#">Búsquedas</a></li>
-                        <li><a href="#about">Gestión</a></li>
-                        <li><a href="#contact">Acerca de...</a></li>
+                        <s:url action="inventoryInput" var="inventoryInputLink" />
+                        <li><a href="${inventoryInputLink}"><s:text name="menu.catalog" /></a></li>
+                        <li><a href="#"><s:text name="menu.search" /></a></li>
+                        <li><a href="#about"><s:text name="menu.manage" /></a></li>
+                        <li><a href="#contact"><s:text name="menu.aboutus" /></a></li>
                     </ul>
                 </div><!-- /.nav-collapse -->
             </div><!-- /.container -->
         </nav><!-- /.navbar -->
 
         <div class="container">
+            <!-- Soporte para internacionalización -->
+            <s:url id="indexEN" namespace="/" action="locale" >
+                <s:param name="request_locale" >en</s:param>
+            </s:url>
+            <s:url id="indexES" namespace="/" action="locale" >
+                <s:param name="request_locale" >es</s:param>
+            </s:url>
 
-            <div class="row row-offcanvas row-offcanvas-right">
+            <s:a href="%{indexEN}" >English</s:a>
+            <s:a href="%{indexES}" >Spanish</s:a>
 
-                <div class="col-xs-12 col-sm-9">
-                    <p class="pull-right visible-xs">
-                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-                    </p>
-                    <div class="jumbotron">
-                        <h1><span class="glyphicon glyphicon-book" aria-hidden="true"></span> miBiblio</h1>
-                        <p>Bienvenido a <strong>miBiblio</strong>, el primer portal diseñado para que puedas gestionar tus propios recursos bibliográficos sin necesidad de instalar ninguna aplicación.</p>
+                <!-- Fin soporte para internacionalización -->
+
+                <div class="row row-offcanvas row-offcanvas-right">
+
+                    <div class="col-xs-12 col-sm-9">
+                        <p class="pull-right visible-xs">
+                            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+                        </p>
+                        <div class="jumbotron">
+                            <h1><span class="glyphicon glyphicon-book" aria-hidden="true"></span> miBiblio</h1>
+                            <p><s:text name="jumbotron.introtext" /></p>
                     </div>
                     <div class="row">
                         <div class="col-xs-6 col-lg-4">
@@ -100,7 +113,7 @@
                     </div><!--/row-->
                 </div><!--/.col-xs-12.col-sm-9-->
                 <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-                    <p> <strong>Últimas Novedades...</strong></p>
+                    <p> <strong><s:text name="sidebar.title" /></strong></p>
                     <div class="list-group">
                         <a href="#" class="list-group-item">Link</a>
                         <a href="#" class="list-group-item">Link</a>
@@ -117,16 +130,13 @@
 
             </div><!--/row-->
 
-            <hr>
-
             <footer>
-                <p>David García García</p>
+                <hr>
+                <p>David García García, Palma de Mallorca 2015</p>
+                <p class="pull-right"><a href="#">Back to top</a></p>
             </footer>
 
         </div><!--/.container-->
-        <footer>
-            <p class="pull-right"><a href="#">Back to top</a></p>
 
-        </footer>
     </body>
 </html>

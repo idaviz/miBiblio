@@ -7,7 +7,8 @@
 <struts>
  
     <constant name="struts.devMode" value="true" />
- 
+    <constant name="struts.custom.i18n.resources" value="global" />
+    
     <package name="mibiblio" extends="struts-default">
  
         <action name="index">
@@ -17,6 +18,17 @@
         <action name="bienvenido" class="dgg.ucav.mibiblio.welcome.action.WelcomeAction" method="execute">
             <result name="success">/WEB-INF/jsp/welcome.jsp</result>
         </action>
+        
+        <action name="locale" 
+                class="dgg.ucav.mibiblio.locale.action.Locale"
+                method="execute">
+            <result name="success">/WEB-INF/jsp/index.jsp</result>
+        </action>
+        
+        <action name="inventoryInput" class="dgg.ucav.mibiblio.inventory.action.InventoryAction" method="execute" >
+            <result name="success">/WEB-INF/jsp/inventory.jsp</result>
+        </action>
+        
     </package>
  
 </struts>
