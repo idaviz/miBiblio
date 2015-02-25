@@ -52,15 +52,34 @@
                     </ul>
                 </div><!-- /.nav-collapse -->
             </div><!-- /.container -->
-        </nav><!-- /.navbar -->
 
-        <div class="container">
-            <div class="col-xs-12 col-sm-9">
-                <p class="pull-right visible-xs">
-                    <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-                </p>
-                <div class="jumbotron">
-                    <h1><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <s:text name="inventory.title" /></h1>
+            <!-- Tabla de resultados -->
+            <s:iterator value="contactList" var="contact">
+            </s:iterator>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>title</th>
+                        <th>isbn</th>
+                    </tr>
+                    <tr>
+                        <td><s:property value="title"></s:property></td>
+                        <td><s:property value="isbn"></s:property></td>
+                    </tr>  
+                </tbody>
+            </table>
+
+
+
+            </nav><!-- /.navbar -->
+
+            <div class="container">
+                <div class="col-xs-12 col-sm-9">
+                    <p class="pull-right visible-xs">
+                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+                    </p>
+                    <div class="jumbotron">
+                        <h1><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <s:text name="inventory.title" /></h1>
                     <p></p>
                 </div>
                 <br>
