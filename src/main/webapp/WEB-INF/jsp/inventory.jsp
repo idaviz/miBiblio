@@ -65,9 +65,9 @@
                     <tr>
                         <td><s:property value="title"></s:property></td>
                         <td><s:property value="isbn"></s:property></td>
-                    </tr>  
-                </tbody>
-            </table>
+                        </tr>  
+                    </tbody>
+                </table>
 
 
 
@@ -119,6 +119,19 @@
                     </div>
                 </div>
                 <br>
+                <!-- Acceso Base de Datos -->
+                <table border="0" id="tabla" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td><b>Identificador</b></td>
+                        <td><b>Título</b></td>
+                    </tr>
+                    <s:iterator value="listaObras" status="linea">
+                            <td><s:property value="idObra"/></td>
+                            <td><s:property value="titulo"/></td>
+                        </tr>
+                    </s:iterator>
+                </table>
+
                 <footer>
                     <hr>
                     <p>David García García, Palma de Mallorca 2015</p>

@@ -4,11 +4,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-     <display-name>miBiblio</display-name>
+    <display-name>miBiblio</display-name>
      
-     <listener>
-         <listener-class>dgg.ucav.mibiblio.dao.ApplicationListener</listener-class>
-     </listener>
+    <listener>
+        <listener-class>dgg.ucav.dao.cajaherramientas.ApplicationListener</listener-class>
+    </listener>
+    
+    <context-param>
+        <param-name>dataSourceJNDI</param-name>
+        <param-value>java:/comp/env/jdbc/AccesoBD</param-value>
+    </context-param>
     
     <session-config>
         <session-timeout>
