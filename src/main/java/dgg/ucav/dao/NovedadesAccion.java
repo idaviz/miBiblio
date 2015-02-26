@@ -16,10 +16,10 @@ import dgg.ucav.dao.javabeans.Obra;
 import dgg.ucav.dao.modelos.ModeloObraDAO;
 
 @SuppressWarnings("serial")
-public class ObraAccion extends ActionSupport implements Preparable, ModelDriven {
+public class NovedadesAccion extends ActionSupport implements Preparable, ModelDriven {
 
     private Obra obra;
-    private List<Obra> listaObras;
+    private List<Obra> listaNovedades;
     private int idObraActual;
 
     /**
@@ -60,22 +60,22 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
         this.obra = obra;
     }
 
-    public List<Obra> getListaObras() {
+    public List<Obra> getListaNovedades() {
         ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
 
-        listaObras = (ArrayList<Obra>) ModeloObraDAO.getListaObras();
-        return listaObras;
+        listaNovedades = (ArrayList<Obra>) ModeloObraDAO.getListaNovedades();
+        return listaNovedades;
     }
 
-    public void setListaObras(List<Obra> listaObras) {
-        this.listaObras = listaObras;
+    public void setListaNovedades(List<Obra> listaNovedades) {
+        this.listaNovedades = listaNovedades;
     }
 
     // devolver la lista de clientes tras la recuperación 
-    public String listado() {
+    public String novedades() {
         ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
 
-        listaObras = (ArrayList<Obra>) ModeloObraDAO.getListaObras();
+        listaNovedades = (ArrayList<Obra>) ModeloObraDAO.getListaNovedades();
         return SUCCESS;
     }
 }

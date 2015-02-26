@@ -53,93 +53,44 @@
                 </div><!-- /.nav-collapse -->
             </div><!-- /.container -->
 
-            <!-- Tabla de resultados -->
-            <s:iterator value="contactList" var="contact">
-            </s:iterator>
-            <table>
-                <tbody>
-                    <tr>
-                        <th>title</th>
-                        <th>isbn</th>
-                    </tr>
-                    <tr>
-                        <td><s:property value="title"></s:property></td>
-                        <td><s:property value="isbn"></s:property></td>
-                        </tr>  
-                    </tbody>
-                </table>
+        </nav><!-- /.navbar -->
 
-
-
-            </nav><!-- /.navbar -->
-
-            <div class="container">
-                <div class="col-xs-12 col-sm-9">
-                    <p class="pull-right visible-xs">
-                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-                    </p>
-                    <div class="jumbotron">
-                        <h1><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <s:text name="inventory.title" /></h1>
+        <div class="container">
+            <div class="col-xs-12 col-sm-9">
+                <p class="pull-right visible-xs">
+                    <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+                </p>
+                <div class="jumbotron">
+                    <h1><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <s:text name="inventory.title" /></h1>
                     <p></p>
                 </div>
                 <br>
-                <div class="media">
-                    <div class="media-left media-top">
-                        <a href="#">
-                            <img class="media-object" src="./pics/defaultbook.svg" alt="imagen">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Advanced English in Use</h4>
-                        <p>Joan Collings. Cambridge University Press 2012.</p>
-                    </div>
-                </div>
+
                 <br>
-                <div class="media">
-                    <div class="media-left media-top">
-                        <a href="#">
-                            <img class="media-object" src="./pics/defaultbook.svg" alt="imagen">
-                        </a>
+                <!-- Tabla de resultados -->
+
+                <s:iterator value="listaObras" status="linea">
+                    <div class="media">
+                        <div class="media-left media-top">
+                            <a href="#">
+                                <img class="media-object" src="./resources/<s:property value="ruta_portada"/>" alt="imagen">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading"><s:property value="titulo"/></h4>
+                            <p><s:property value="subtitulo"/><br> [<s:property value="id_tb_obra"/>][<s:property value="isbn"/>]<br><s:property value="idioma"/> <s:property value="nivel_mre"/>. </p>
+                        </div>
                     </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">First Certificate in English. Tests.</h4>
-                        <p>John Steward. Oxford University 2007.</p>
-                    </div>
-                </div>
-                <br>
-                <div class="media">
-                    <div class="media-left media-top">
-                        <a href="#">
-                            <img class="media-object" src="./pics/defaultbook.svg" alt="imagen">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Certificate in Advanced English.</h4>
-                        <p>John Steward. Oxford University 2007.</p>
-                    </div>
-                </div>
-                <br>
-                <!-- Acceso Base de Datos -->
-                <table border="0" id="tabla" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td><b>Identificador</b></td>
-                        <td><b>Título</b></td>
-                    </tr>
-                    <s:iterator value="listaObras" status="linea">
-                            <td><s:property value="idObra"/></td>
-                            <td><s:property value="titulo"/></td>
-                        </tr>
-                    </s:iterator>
-                </table>
+                    <br>
+                </s:iterator>
 
                 <footer>
                     <hr>
                     <p>David García García, Palma de Mallorca 2015</p>
                     <p class="pull-right"><a href="#">Back to top</a></p>
                 </footer>
-            </div><!--/.container-->
 
+            </div>
         </div>
-
     </body>
 </html>

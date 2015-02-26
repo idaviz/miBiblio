@@ -3,28 +3,47 @@
  */
 package dgg.ucav.dao.javabeans;
 
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author dgarcia25
  */
 public class Obra {
-    private int id_tb_obra;
+
+    private String id_tb_obra;
     private String titulo;
+    private String isbn;
+    private String subtitulo;
+    private String idioma;
+    private String nivel_mre;
+    private String ruta_portada;
+    private String fecha_insercion;
 
     public Obra() {
     }
 
-    public Obra(int id_tb_obra, String tiulo) {
+    public Obra(String id_tb_obra, String tiulo) {
         this.id_tb_obra = id_tb_obra;
         this.titulo = titulo;
     }
 
-    public int getId_tb_obra() {
+    public String getId_tb_obra() {
         return id_tb_obra;
     }
 
-    public void setId_tb_obra(int id_tb_obra) {
+    public void setId_tb_obra(String id_tb_obra) {
         this.id_tb_obra = id_tb_obra;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public String getTitulo() {
@@ -34,5 +53,46 @@ public class Obra {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-    
+
+    public String getSubtitulo() {
+        return subtitulo;
+    }
+
+    public void setSubtitulo(String subtitulo) {
+        this.subtitulo = subtitulo;
+    }
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
+
+    public String getNivel_mre() {
+        return nivel_mre;
+    }
+
+    public void setNivel_mre(String nivel_mre) {
+        this.nivel_mre = nivel_mre;
+    }
+
+    public String getRuta_portada() {
+        return ruta_portada;
+    }
+
+    public void setRuta_portada(String ruta_portada) {
+        this.ruta_portada = ruta_portada;
+    }
+
+    public String getFecha_insercion() {
+        
+        return fecha_insercion;
+    }
+
+    public void setFecha_insercion(String fecha_insercion) {
+        this.fecha_insercion = fecha_insercion;
+    }
+
 }

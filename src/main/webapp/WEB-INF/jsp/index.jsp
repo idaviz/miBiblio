@@ -45,7 +45,7 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <s:url action="inventoryInput" var="inventoryInputLink" />
+                        <s:url action="inventory" var="inventoryInputLink" />
                         <li><a href="${inventoryInputLink}"><s:text name="menu.catalog" /></a></li>
                         <li><a href="#"><s:text name="menu.search" /></a></li>
                         <li><a href="#about"><s:text name="menu.manage" /></a></li>
@@ -115,16 +115,12 @@
                 <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
                     <p> <strong><s:text name="sidebar.title" /></strong></p>
                     <div class="list-group">
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
+                        <s:iterator value="listaNovedades" status="linea">
+                            <a href="#" class="list-group-item">
+                                <s:property value="titulo"/><br>
+                                <i> &nbsp;<s:property value="fecha_insercion"/></i>
+                            </a>         
+                        </s:iterator>
                     </div>
                 </div><!--/.sidebar-offcanvas-->
 
