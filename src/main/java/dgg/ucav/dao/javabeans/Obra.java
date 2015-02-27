@@ -3,9 +3,7 @@
  */
 package dgg.ucav.dao.javabeans;
 
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  *
@@ -20,7 +18,7 @@ public class Obra {
     private String idioma;
     private String nivel_mre;
     private String ruta_portada;
-    private String fecha_insercion;
+    private Date fecha_insercion;
 
     public Obra() {
     }
@@ -86,12 +84,12 @@ public class Obra {
         this.ruta_portada = ruta_portada;
     }
 
-    public String getFecha_insercion() {
+    public Date getFecha_insercion() {
         
         return fecha_insercion;
     }
 
-    public void setFecha_insercion(String fecha_insercion) {
+    public void setFecha_insercion(Date fecha_insercion) {
         this.fecha_insercion = fecha_insercion;
     }
 

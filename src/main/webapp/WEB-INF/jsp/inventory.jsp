@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
+<!-- Librerías -->
+<%@ include file="/WEB-INF/jsp/inc/include.jsp" %>
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -31,31 +31,11 @@
         </style>
     </head>
     <body>
-
-        <nav class="navbar navbar-fixed-top navbar-inverse">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Menú oculto</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="./index.jsp"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;&nbsp;miBiblio</a>
-                </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#"><s:text name="menu.catalog" /></a></li>
-                        <li><a href="#"><s:text name="menu.search" /></a></li>
-                        <li><a href="#about"><s:text name="menu.manage" /></a></li>
-                        <li><a href="#contact"><s:text name="menu.aboutus" /></a></li>
-                    </ul>
-                </div><!-- /.nav-collapse -->
-            </div><!-- /.container -->
-
-        </nav><!-- /.navbar -->
+        <!-- Barra de navegación -->
+        <%@ include file="/WEB-INF/jsp/inc/navbar.jsp" %>
 
         <div class="container">
+
             <div class="col-xs-12 col-sm-9">
                 <p class="pull-right visible-xs">
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
@@ -83,14 +63,12 @@
                     </div>
                     <br>
                 </s:iterator>
-
-                <footer>
-                    <hr>
-                    <p>David García García, Palma de Mallorca 2015</p>
-                    <p class="pull-right"><a href="#">Back to top</a></p>
-                </footer>
-
+                <%@ include file="/WEB-INF/jsp/inc/footer.jsp" %>
             </div>
+
+            <%@ include file="/WEB-INF/jsp/inc/sidebar.jsp" %>
+
         </div>
+
     </body>
 </html>

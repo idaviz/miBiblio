@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
+<!-- Librerías -->
+<%@ include file="/WEB-INF/jsp/inc/include.jsp" %>
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -31,29 +31,9 @@
         </style>
     </head>
     <body>
+        <!-- Barra de navegación -->
+        <%@ include file="/WEB-INF/jsp/inc/navbar.jsp" %>
 
-        <nav class="navbar navbar-fixed-top navbar-inverse">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Menú oculto</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="./index.jsp"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;&nbsp;miBiblio</a>
-                </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <s:url action="inventory" var="inventoryInputLink" />
-                        <li><a href="${inventoryInputLink}"><s:text name="menu.catalog" /></a></li>
-                        <li><a href="#"><s:text name="menu.search" /></a></li>
-                        <li><a href="#about"><s:text name="menu.manage" /></a></li>
-                        <li><a href="#contact"><s:text name="menu.aboutus" /></a></li>
-                    </ul>
-                </div><!-- /.nav-collapse -->
-            </div><!-- /.container -->
-        </nav><!-- /.navbar -->
 
         <div class="container">
             <!-- Soporte para internacionalización -->
@@ -112,25 +92,11 @@
                         </div><!--/.col-xs-6.col-lg-4-->
                     </div><!--/row-->
                 </div><!--/.col-xs-12.col-sm-9-->
-                <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-                    <p> <strong><s:text name="sidebar.title" /></strong></p>
-                    <div class="list-group">
-                        <s:iterator value="listaNovedades" status="linea">
-                            <a href="#" class="list-group-item">
-                                <s:property value="titulo"/><br>
-                                <i> &nbsp;<s:property value="fecha_insercion"/></i>
-                            </a>         
-                        </s:iterator>
-                    </div>
-                </div><!--/.sidebar-offcanvas-->
+                <%@ include file="/WEB-INF/jsp/inc/sidebar.jsp" %>
 
             </div><!--/row-->
 
-            <footer>
-                <hr>
-                <p>David García García, Palma de Mallorca 2015</p>
-                <p class="pull-right"><a href="#">Back to top</a></p>
-            </footer>
+            <%@ include file="/WEB-INF/jsp/inc/footer.jsp" %>
 
         </div><!--/.container-->
 

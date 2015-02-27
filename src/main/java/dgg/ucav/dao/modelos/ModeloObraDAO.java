@@ -14,6 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import dgg.ucav.dao.cajaherramientas.GestionBaseDeDatos;
 import dgg.ucav.dao.javabeans.Obra;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class ModeloObraDAO extends ModeloDAO {
 
@@ -21,7 +27,7 @@ public class ModeloObraDAO extends ModeloDAO {
     Connection conexion = null;
     ResultSet resultado = null;
     private static List<Obra> listaObras;
-    
+
     private static List<Obra> listaNovedades;
 
     // devolver la lista de obras 
@@ -50,7 +56,7 @@ public class ModeloObraDAO extends ModeloDAO {
                     // Se efectúa el mapping de los atributos con los campos de la tabla SQL 
                     obra = mapperObra(resultado);
 
-                                   // Se añade el objeto a la lista de obrass
+                    // Se añade el objeto a la lista de obrass
                     listaObras.add((Obra) obra);
                 }
             }
@@ -79,7 +85,7 @@ public class ModeloObraDAO extends ModeloDAO {
         // Devolver la lista de obras 
         return listaObras;
     }
-    
+
     // devolver la lista de obras 
     public List<Obra> getListaNovedades() {
         // Variables 
@@ -106,7 +112,7 @@ public class ModeloObraDAO extends ModeloDAO {
                     // Se efectúa el mapping de los atributos con los campos de la tabla SQL 
                     obra = mapperObra(resultado);
 
-                                   // Se añade el objeto a la lista de obrass
+                    // Se añade el objeto a la lista de obrass
                     listaNovedades.add((Obra) obra);
                 }
             }
@@ -191,9 +197,6 @@ public class ModeloObraDAO extends ModeloDAO {
         return obra;
     }
 
-    
-    
-
     // Realizar el mapping relacional hacia objeto 
     public Obra mapperObra(ResultSet resultado) {
         // Variables 
@@ -205,51 +208,63 @@ public class ModeloObraDAO extends ModeloDAO {
             } else {
                 obra.setId_tb_obra(resultado.getString("id_tb_obra"));
             }
-                                    
+
             if (resultado.getString("titulo") == null) {
                 obra.setTitulo("");
             } else {
                 obra.setTitulo(resultado.getString("titulo"));
             }
-            
+
             if (resultado.getString("subtitulo") == null) {
                 obra.setSubtitulo("");
             } else {
                 obra.setSubtitulo(resultado.getString("subtitulo"));
             }
-            
+
             if (resultado.getString("idioma") == null) {
                 obra.setIdioma("");
             } else {
                 obra.setIdioma(resultado.getString("idioma"));
             }
-            
+
             if (resultado.getString("nivel_mre") == null) {
                 obra.setNivel_mre("");
             } else {
                 obra.setNivel_mre(resultado.getString("nivel_mre"));
             }
-            
+
             if (resultado.getString("ruta_portada") == null) {
                 obra.setRuta_portada("");
             } else {
                 obra.setRuta_portada(resultado.getString("ruta_portada"));
             }
-            
+
             if (resultado.getString("isbn") == null) {
                 obra.setIsbn("");
             } else {
                 obra.setIsbn(resultado.getString("isbn"));
             }
-            
-            
+
             if (resultado.getString("fechainsercion") == null) {
-                obra.setFecha_insercion("");
+                obra.setFecha_insercion(null);
             } else {
-                obra.setFecha_insercion(resultado.getString("fechainsercion"));
+
+                /**
+                 * String string = "January 2, 2010"; 
+                 * DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+                 * Date date = format.parse(string);
+                 * System.out.println(date); // Sat Jan 02 00:00:00 GMT 2010
+                 */
+                
+                
+                String fechaOriginal = resultado.getString("fechainsercion");
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date date = format.parse(fechaOriginal);            
+                obra.setFecha_insercion(date);
+                
             }
-            
-        } catch (Exception e) {
+
+        } catch (SQLException | ParseException e) {
             //Si se produce un error durante el mapping de atributos 
             obra = null;
             System.out.println("Error en el mapping de atributos de una obra de la clase ModeloObraDAO, función mapperObra");
