@@ -1,7 +1,7 @@
 <!-- Librerías -->
 <%@ include file="/WEB-INF/jsp/inc/include.jsp" %>
 
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +45,7 @@
             </s:url>
 
             <s:a href="%{indexEN}" >English</s:a>
-            <s:a href="%{indexES}" >Spanish</s:a>
+            <s:a href="%{indexES}" >Español</s:a>
 
                 <!-- Fin soporte para internacionalización -->
 

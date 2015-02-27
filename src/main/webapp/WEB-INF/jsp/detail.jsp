@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="struts2, twitter, bootstrap, plugin, showcase" />
         <meta name="description" content="A Showcase for the Struts2 Bootstrap Plugin" />
-        <title><s:text name="inventory.title" /></title>
+        <title><s:text name="detail.title" /></title>
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>

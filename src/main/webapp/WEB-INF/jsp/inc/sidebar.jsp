@@ -5,10 +5,10 @@
             <a href="#" class="list-group-item">
                 <s:property value="titulo"/><br>
                 <small><i>
-                        "Subido el
+                        "<s:text name="sidebar.added" />
                         <s:date name="fecha_insercion" var="formato_dia_es" format="dd/MM/yyyy"/>
                         <s:property value="formato_dia_es"/>
-                        a las 
+                        <s:text name="sidebar.at" /> 
                         <s:date name="fecha_insercion" var="formato_hora_es" format="HH:mm"/>
                         <s:property value="formato_hora_es"/>"
                     </i></small>
