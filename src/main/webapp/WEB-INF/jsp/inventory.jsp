@@ -35,7 +35,7 @@
         <%@ include file="/WEB-INF/jsp/inc/navbar.jsp" %>
 
         <div class="container">
-            
+
             <!-- Soporte para internacionalización -->
             <s:url id="inventoryEN" namespace="/" action="locale" >
                 <s:param name="request_locale" >en</s:param>
@@ -68,10 +68,16 @@
                         <div class="media-body">
                             <h4 class="media-heading"><s:property value="titulo"/></h4>
                             <p><s:property value="subtitulo"/><br> [<s:property value="id_tb_obra"/>][<s:property value="isbn"/>]<br><s:property value="idioma"/> <s:property value="nivel_mre"/>. </p>
-                            <s:url action="detail" var="detailInputLink">
-                                <s:param name="id_tb_obra" value="id_tb_obra"/>
-                            <s:param name="titulo" value="titulo"/>
-                            </s:url>
+                                <s:url action="detail" var="detailInputLink">
+                                    <s:param name="id_tb_obra" value="id_tb_obra"/>
+                                    <s:param name="titulo" value="titulo"/>
+                                    <s:param name="subtitulo" value="subtitulo"/>
+                                    <s:param name="ruta_portada" value="ruta_portada"/>
+                                    <s:param name="isbn" value="isbn"/>
+                                    <s:param name="idioma" value="idioma"/>
+                                    <s:param name="nivel_mre" value="nivel_mre"/>
+                                    
+                                </s:url>
                             <a href="${detailInputLink}">ver detalle</a>
                         </div>
                     </div>

@@ -60,25 +60,23 @@
                 <table class="table">
                     <tr>
                         <td>
-                            <img width="200" height="300" src="./resources/1.jpg" alt="imagen">
+                            <img width="200" height="300" src='./resources/<s:property value="ruta_portada"/>' alt="imagen">
                         </td>
                         <td>
                             <ul class="list-group">
                                 <li style="list-style-type:none"><h3><s:property value="titulo"/></h3></li>
-                                <li style="list-style-type:none"><s:property value="id_tb_obra"/></li>
-                                <li style="list-style-type:none">Editorial</li>
+                                <li style="list-style-type:none"><h4><s:property value="subtitulo"/></h4></li>
+                                <li style="list-style-type:none">ISBN: <s:property value="isbn"/></li>
+                                <li style="list-style-type:none"><s:text name="detail.level" />: <s:property value="nivel_mre"/></li>
+                                <li style="list-style-type:none"><s:text name="detail.language" />: <s:property value="idioma"/></li>
+                                
                             </ul>
                                 
                         </td>
                     </tr>
                 </table>
-                
                 <%@ include file="/WEB-INF/jsp/inc/footer.jsp" %>
             </div>
-
-            <%@ include file="/WEB-INF/jsp/inc/sidebar.jsp" %>
-
         </div>
-
     </body>
 </html>
