@@ -43,11 +43,7 @@
             <s:url id="inventoryES" namespace="/" action="locale" >
                 <s:param name="request_locale" >es</s:param>
             </s:url>
-            <!-- Fin soporte para internacionalización -->
-            
-            
-            
-            
+            <!-- Fin soporte para internacionalización -->            
 
             <div class="col-xs-12 col-sm-9">
                 <p class="pull-right visible-xs">
@@ -72,6 +68,8 @@
                         <div class="media-body">
                             <h4 class="media-heading"><s:property value="titulo"/></h4>
                             <p><s:property value="subtitulo"/><br> [<s:property value="id_tb_obra"/>][<s:property value="isbn"/>]<br><s:property value="idioma"/> <s:property value="nivel_mre"/>. </p>
+                            <s:url action="detail" var="detailInputLink" />
+                            <a href="${detailInputLink}">ver detalle</a>
                         </div>
                     </div>
                     <br>

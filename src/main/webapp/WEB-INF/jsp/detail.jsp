@@ -35,7 +35,7 @@
         <%@ include file="/WEB-INF/jsp/inc/navbar.jsp" %>
 
         <div class="container">
-            
+
             <!-- Soporte para internacionalización -->
             <s:url id="inventoryEN" namespace="/" action="locale" >
                 <s:param name="request_locale" >en</s:param>
@@ -44,38 +44,35 @@
                 <s:param name="request_locale" >es</s:param>
             </s:url>
             <!-- Fin soporte para internacionalización -->
-            
-            
-            
-            
 
             <div class="col-xs-12 col-sm-9">
                 <p class="pull-right visible-xs">
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                 </p>
                 <div class="jumbotron">
-                    <h1><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <s:text name="inventory.title" /></h1>
+                    <h1><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;&nbsp;<s:text name="detail.title" /></h1>
                     <p></p>
                 </div>
                 <br>
-
                 <br>
                 <!-- Tabla de resultados -->
-
-                <s:iterator value="listaObras" status="linea">
-                    <div class="media">
-                        <div class="media-left media-top">
-                            <a href="#">
-                                <img class="media-object" src="./resources/<s:property value="ruta_portada"/>" alt="imagen">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading"><s:property value="titulo"/></h4>
-                            <p><s:property value="subtitulo"/><br> [<s:property value="id_tb_obra"/>][<s:property value="isbn"/>]<br><s:property value="idioma"/> <s:property value="nivel_mre"/>. </p>
-                        </div>
-                    </div>
-                    <br>
-                </s:iterator>
+                <h2>Título del libro</h2>
+                <table class="table">
+                    <tr>
+                        <td>
+                            <img width="50%" height="50%" src="./resources/1.jpg" alt="imagen">
+                        </td>
+                        <td>
+                            <ul class="list-group">
+                                <li style="list-style-type:none"><h3>Título</h3></li>
+                                <li style="list-style-type:none"><s:property value="titulo"/></li>
+                                <li style="list-style-type:none">Editorial</li>
+                            </ul>
+                                
+                        </td>
+                    </tr>
+                </table>
+                
                 <%@ include file="/WEB-INF/jsp/inc/footer.jsp" %>
             </div>
 
