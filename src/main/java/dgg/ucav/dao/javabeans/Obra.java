@@ -91,6 +91,5 @@ public class Obra {
 
     public void setFecha_insercion(Date fecha_insercion) {
         this.fecha_insercion = fecha_insercion;
-    }
-
+    }   
 }

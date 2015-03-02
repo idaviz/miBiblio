@@ -19,14 +19,14 @@
         <action name="locale" class="dgg.ucav.mibiblio.locale.action.Locale" method="execute">
             <result name="success" type="chain">detail</result>
         </action>
-        <action name="detail" method="novedades" class="dgg.ucav.dao.NovedadesAccion">
+        <action name="detail" method="listado" class="dgg.ucav.dao.ObraAccion">
             <result>/WEB-INF/jsp/detail.jsp</result>
         </action>
         <!-- Fin Acciones encadenadas -->
         
         
         <!-- Acciones encadenadas. Primero selecciona idioma, luego genera 
-        Inventory y finalmente carga lista de novedades y abra la página -->
+        Inventory y finalmente carga lista de novedades y abre la página -->
         <action name="locale" class="dgg.ucav.mibiblio.locale.action.Locale" method="execute">
             <result name="success" type="chain">inventory</result>
         </action>
