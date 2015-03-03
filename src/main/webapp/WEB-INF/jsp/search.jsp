@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="struts2, twitter, bootstrap, plugin, showcase" />
         <meta name="description" content="A Showcase for the Struts2 Bootstrap Plugin" />
-        <title><s:text name="inventory.title" /></title>
+        <title><s:text name="search.title" /></title>
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
@@ -50,42 +50,28 @@
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                 </p>
                 <div class="jumbotron">
-                    <h1><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <s:text name="inventory.title" /></h1>
+                    <h1><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <s:text name="search.title" /></h1>
                     <p></p>
+                </div>
+                <br>
+                <div class="container">
+                    <form method="post" action="porDefinir.action">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">¡Buscar!</button>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Palabras de búsqueda...">
+                        </div><!-- /input-group -->
+                    </form>
                 </div>
                 <br>
 
                 <br>
                 <!-- Tabla de resultados -->
 
-                <s:iterator value="listaObras" status="linea">
-                    <div class="media">
-                        <div class="media-left media-top">
-                            <a href="#">
-                                <img class="media-object" src="./resources/<s:property value="ruta_portada"/>" alt="imagen">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading"><s:property value="titulo"/></h4>
-                            <p><s:property value="subtitulo"/><br> [<s:property value="id_tb_obra"/>][<s:property value="isbn"/>]<br><s:property value="idioma"/> <s:property value="nivel_mre"/>. </p>
-                                <s:url action="detail" var="detailInputLink">
-                                    <s:param name="id_tb_obra" value="id_tb_obra"/>
-                                    <s:param name="titulo" value="titulo"/>
-                                    <s:param name="subtitulo" value="subtitulo"/>
-                                    <s:param name="ruta_portada" value="ruta_portada"/>
-                                    <s:param name="isbn" value="isbn"/>
-                                    <s:param name="idioma" value="idioma"/>
-                                    <s:param name="nivel_mre" value="nivel_mre"/>                                    
-                                </s:url>
-                            <a href="${detailInputLink}">ver detalle</a>
-                        </div>
-                    </div>
-                    <br>
-                </s:iterator>
                 <%@ include file="/WEB-INF/jsp/inc/footer.jsp" %>
             </div>
 
-            <%@ include file="/WEB-INF/jsp/inc/sidebar.jsp" %>
 
         </div>
 

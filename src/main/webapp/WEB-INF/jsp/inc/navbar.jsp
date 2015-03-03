@@ -13,7 +13,8 @@
             <ul class="nav navbar-nav">
                 <s:url action="inventory" var="inventoryInputLink" />
                 <li><a href="${inventoryInputLink}"><s:text name="menu.catalog" /></a></li>
-                <li><a href="#"><s:text name="menu.search" /></a></li>
+                <s:url action="search" var="searchInputLink" />
+                <li><a href="${searchInputLink}"><s:text name="menu.search" /></a></li>
                 <li><a href="#about"><s:text name="menu.manage" /></a></li>
                 <li><a href="#contact"><s:text name="menu.aboutus" /></a></li>
             </ul>
