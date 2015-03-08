@@ -54,15 +54,17 @@
                     <p></p>
                 </div>
                 <br>
-                <div class="container">
-                    <form method="post" action="porDefinir.action">
+                <div>
+
+                    <s:form theme="bootstrap" action="BusquedaAccion" method="POST">
                         <div class="input-group">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">¡Buscar!</button>
+                                <s:submit key="Buscar!" class="btn btn-default" type="button" />
                             </span>
-                            <input type="text" class="form-control" placeholder="Palabras de búsqueda...">
+                            <s:textfield name="palabraBusqueda" class="form-control" placeholder="Palabras de búsqueda..."/>
                         </div><!-- /input-group -->
-                    </form>
+                    </s:form>
+
                 </div>
                 <br>
 
