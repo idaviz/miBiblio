@@ -15,11 +15,9 @@ import java.util.List;
 import dgg.ucav.dao.cajaherramientas.GestionBaseDeDatos;
 import dgg.ucav.dao.javabeans.Obra;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 public class ModeloObraDAO extends ModeloDAO {
 
@@ -27,7 +25,7 @@ public class ModeloObraDAO extends ModeloDAO {
     Connection conexion = null;
     ResultSet resultado = null;
     private static List<Obra> listaObras;
-
+    private static List<Obra> listaResultados;
     private static List<Obra> listaNovedades;
 
     // devolver la lista de obras 
@@ -140,6 +138,62 @@ public class ModeloObraDAO extends ModeloDAO {
 
         // Devolver la lista de obras 
         return listaNovedades;
+    }
+    
+    // devolver la lista de obras 
+    public List<Obra> getListaResultados(String clave) {
+        // Variables 
+        PreparedStatement consulta = null;
+        Obra obra = null;
+        String consultaString = null;
+        listaResultados = new ArrayList<Obra>();
+
+        try {
+            // Apertura de una conexión 
+            conexion = super.getConnection();
+
+            // consulta de lista de obras 
+            consultaString = "SELECT * FROM tb_obra WHERE titulo LIKE '%"+clave+"%'";
+
+            consulta = conexion.prepareStatement(consultaString);
+
+            // Ejecución de la consulta 
+            resultado = consulta.executeQuery();
+
+            // Se almacena el resultado en una lista 
+            if (resultado != null) {
+                while (resultado.next()) {
+                    // Se efectúa el mapping de los atributos con los campos de la tabla SQL 
+                    obra = mapperObra(resultado);
+
+                    // Se añade el objeto a la lista de obrass
+                    listaResultados.add((Obra) obra);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error en la consulta de la clase ModeloObraDAO función getListaResultados");
+        } finally {
+            try {
+                // Cierre de la conexión 
+                if (resultado != null) {
+
+                    GestionBaseDeDatos.closeResulset(resultado);
+                }
+                if (consulta != null) {
+
+                    GestionBaseDeDatos.closeRequest(consulta);
+                }
+                if (conexion != null) {
+
+                    GestionBaseDeDatos.closeConnection(conexion);
+                }
+            } catch (Exception ex) {
+                System.out.println("Error en el cierre de la conexion con la base de datos en la clase ModeloClienteDAO función getListaResultados");
+            }
+        }
+
+        // Devolver la lista de obras 
+        return listaResultados;
     }
 
     // buscar una obra en la base 
