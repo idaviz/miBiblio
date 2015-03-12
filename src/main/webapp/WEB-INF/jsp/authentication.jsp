@@ -50,21 +50,44 @@
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                 </p>
                 <div class="jumbotron">
-                    <h1><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <s:text name="search.title" /></h1>
+                    <h1><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <s:text name="authentication.title" /></h1>
                     <p></p>
                 </div>
                 <br>
                 <div>
-                    <h4><s:text name="search.text" /></h4><br/>
-                    <s:form theme="bootstrap" method="POST" action="search.result">
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <s:submit key="Buscar!" class="btn btn-primary" type="button"/>
-                            </span>
-                            <s:textfield name="palabraBusqueda" class="form-control" placeholder="Palabras de búsqueda..."/>
-                        </div><!-- /input-group -->
-                    </s:form>
+                    <h4><s:text name="authentication.text" /></h4><br/>
 
+                    <s:form class="form-horizontal" theme="bootstrap" method="POST" action="">
+                        
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Usuario</label>
+                                <div class="col-sm-10">
+                                    <s:textfield name="user" class="form-control" placeholder="Su usuario"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>
+                                <div class="col-sm-10">
+                                    <s:textfield name="pass" class="form-control" placeholder="Su contraseña"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Recordarme
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <s:submit key=" Acceder " class="btn btn-primary" type="button"/>
+                                    
+                                </div>
+                            </div>
+                         
+                    </s:form>
                 </div>
                 <br>
 

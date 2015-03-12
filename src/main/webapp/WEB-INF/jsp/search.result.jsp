@@ -86,7 +86,10 @@
                    
                 </div>
                 <br>
-
+                <s:url action="search" var="searchInputLink" />
+                <ul style="list-style: none;">
+                    <li class="pull-right"><a href="${searchInputLink}"><s:text name="freelink.newsearch" /> <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a></li>
+                </ul>
                 <br>
                 <!-- Tabla de resultados -->
 
