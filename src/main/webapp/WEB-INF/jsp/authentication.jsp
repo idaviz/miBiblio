@@ -68,7 +68,7 @@
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>
                                 <div class="col-sm-10">
-                                    <s:textfield name="pass" class="form-control" placeholder="Su contraseña"/>
+                                    <s:password name="pass" class="form-control" placeholder="Su contraseña"/>
                                 </div>
                             </div>
                             <div class="form-group">

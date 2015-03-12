@@ -34,7 +34,7 @@ public class ModeloObraDAO extends ModeloDAO {
         PreparedStatement consulta = null;
         Obra obra = null;
         String consultaString = null;
-        listaObras = new ArrayList<Obra>();
+        listaObras = new ArrayList<>();
 
         try {
             // Apertura de una conexión 
@@ -302,20 +302,10 @@ public class ModeloObraDAO extends ModeloDAO {
             if (resultado.getString("fechainsercion") == null) {
                 obra.setFecha_insercion(null);
             } else {
-
-                /**
-                 * String string = "January 2, 2010"; 
-                 * DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-                 * Date date = format.parse(string);
-                 * System.out.println(date); // Sat Jan 02 00:00:00 GMT 2010
-                 */
-                
-                
                 String fechaOriginal = resultado.getString("fechainsercion");
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = format.parse(fechaOriginal);            
                 obra.setFecha_insercion(date);
-                
             }
 
         } catch (SQLException | ParseException e) {
