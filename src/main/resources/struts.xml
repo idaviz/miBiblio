@@ -14,7 +14,47 @@
         Esto hace que cualquier acción utilice Listado_Cliente como respuesta
         <default-action-ref name="Listado_Cliente"/>
         -->
-         <action name="authenticate">
+        <interceptors>
+            <interceptor name="autenticacionInterceptor"
+                         class="dgg.ucav.interceptores.AutenticacionInterceptor">
+                <param name="usuarioPredeterminado">dgarcia</param>
+                <param name="contrasenaPredeterminada">dgarcia</param>
+            </interceptor>
+        </interceptors>
+        
+        <action name="action">
+            <interceptor-ref name="autenticacionInterceptor"/>
+        </action>
+        
+        <action name="Conectar" class="dgg.ucav.acciones.AutenticarAccion" method="conectar">
+            <param name="usuarioPredeterminado">dgarcia</param>
+            <param name="contrasenaPredeterminada">dgarcia</param>
+            <result name="input">/WEB-INF/jsp/authentication.jsp</result>
+            <result type="redirectAction">Proteger</result> 
+        </action>
+
+        <action name="Desconectar" class="dgg.ucav.acciones.AutenticarAccion" method="desconectar">
+            <result type="redirectAction">Inicializar</result> 
+        </action>
+        
+        <action name="Inicializar">
+            <result>/WEB-INF/jsp/authentication.jsp</result>
+        </action>
+        
+        
+        <action name="Proteger">
+            <interceptor-ref name="createSession"/>
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="autenticacionInterceptor"/>
+            <result name="autenticacion">/WEB-INF/jsp/authentication.jsp</result>
+            <result>/WEB-INF/jsp/manage.jsp</result>
+        </action>
+        
+        
+        
+        
+        
+        <action name="authenticate">
             <result>/WEB-INF/jsp/authentication.jsp</result>
         </action>
         

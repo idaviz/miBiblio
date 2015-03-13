@@ -15,9 +15,9 @@ import com.opensymphony.xwork2.ActionSupport;
 public class AutenticarAccion extends ActionSupport implements SessionAware {
 
     private String usuario;
-    private String contraseña;
+    private String contrasena;
     private String usuarioPredeterminado;
-    private String contraseñaPredeterminada;
+    private String contrasenaPredeterminada;
     private Map<String, Object> sessionMap;
 
     @Override
@@ -28,9 +28,9 @@ public class AutenticarAccion extends ActionSupport implements SessionAware {
     // descriptores de acceso
     public String conectar() {
         // verificar si el identificador y la contraseña son correctos
-        if (usuario != null && contraseña != null) {
+        if (usuario != null && contrasena != null) {
             if (usuario.equals(usuarioPredeterminado)
-                    && contraseña.equals(contraseñaPredeterminada)) {
+                    && contrasena.equals(contrasenaPredeterminada)) {
                 // autenticación correcta,guardar el valor en la sesión
                 this.sessionMap.put("autenticacion", true);
                 return SUCCESS;

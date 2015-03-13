@@ -50,49 +50,22 @@
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                 </p>
                 <div class="jumbotron">
-                    <h1><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <s:text name="manage.title" /></h1>
+                    <h1><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <s:text name="authentication.title" /></h1>
                     <p></p>
                 </div>
                 <br>
+                
+                
                 <div>
-                    <h4><s:text name="authentication.text" /></h4><br/>
+                    <h3>Recurso</h3>
 
-                    <s:form class="form-horizontal" theme="bootstrap" method="POST" action="Conectar">
-                        
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Usuario</label>
-                                <div class="col-sm-10">
-                                    <s:textfield name="usuario" class="form-control" placeholder="Su usuario"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>
-                                <div class="col-sm-10">
-                                    <s:password name="contrasena" class="form-control" placeholder="Su contraseña"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> Recordarme
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <s:submit value="Confirmar" class="btn btn-primary" type="button"/>
-                                    
-                                </div>
-                            </div>
-                         
-                    </s:form>
+                    Este recurso está protegido, está autenticado;
+                    <br/><a href="Desconectar.action">Desconectarse</a>
                 </div>
+                
+                
                 <br>
-
                 <br>
-                <!-- Tabla de resultados -->
 
                 <%@ include file="/WEB-INF/jsp/inc/footer.jsp" %>
             </div>

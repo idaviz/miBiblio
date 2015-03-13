@@ -9,7 +9,7 @@ package dgg.ucav.dao.javabeans;
  */
 public class Usuario {
     private String usuario;
-    private String contraseña;
+    private String contrasena;
     private String nombre;
     private String apellidos;
     private String email;
@@ -25,12 +25,12 @@ public class Usuario {
         this.usuario = usuario;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getNombre() {
