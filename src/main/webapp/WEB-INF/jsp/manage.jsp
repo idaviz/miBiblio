@@ -50,7 +50,7 @@
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                 </p>
                 <div class="jumbotron">
-                    <h1><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <s:text name="authentication.title" /></h1>
+                    <h1><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <s:text name="manage.title" /></h1>
                     <p></p>
                 </div>
                 <br>

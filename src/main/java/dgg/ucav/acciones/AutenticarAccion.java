@@ -16,10 +16,30 @@ public class AutenticarAccion extends ActionSupport implements SessionAware {
 
     private String usuario;
     private String contrasena;
-    private String usuarioPredeterminado;
-    private String contrasenaPredeterminada;
+    private final String usuarioPredeterminado = "dgarcia";
+    private final String contrasenaPredeterminada = "dgarcia";
     private Map<String, Object> sessionMap;
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    /**
+     *
+     * @param map
+     */
     @Override
     public void setSession(Map<String, Object> map) {
         this.sessionMap = map;
@@ -32,6 +52,7 @@ public class AutenticarAccion extends ActionSupport implements SessionAware {
             if (usuario.equals(usuarioPredeterminado)
                     && contrasena.equals(contrasenaPredeterminada)) {
                 // autenticación correcta,guardar el valor en la sesión
+                System.out.println("usuario y contraseña correctos!");
                 this.sessionMap.put("autenticacion", true);
                 return SUCCESS;
             }

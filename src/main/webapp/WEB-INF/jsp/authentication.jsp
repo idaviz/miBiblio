@@ -57,18 +57,18 @@
                 <div>
                     <h4><s:text name="authentication.text" /></h4><br/>
 
-                    <s:form class="form-horizontal" theme="bootstrap" method="POST" action="Conectar">
+                    <s:form class="form-horizontal" theme="bootstrap" method="post" action="Conectar">
                         
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Usuario</label>
+                                <label for="usuario" class="col-sm-2 control-label">Usuario</label>
                                 <div class="col-sm-10">
-                                    <s:textfield name="usuario" class="form-control" placeholder="Su usuario"/>
+                                    <s:textfield name="usuario" id="usuario" class="form-control" placeholder="Su usuario"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>
+                                <label for="contrasena" class="col-sm-2 control-label">Contraseña</label>
                                 <div class="col-sm-10">
-                                    <s:password name="contrasena" class="form-control" placeholder="Su contraseña"/>
+                                    <s:password name="contrasena" id="contrasena" class="form-control" placeholder="Su contraseña"/>
                                 </div>
                             </div>
                             <div class="form-group">

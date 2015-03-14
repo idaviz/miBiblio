@@ -5,7 +5,7 @@
 <!-- Author: David -->
  
 <struts>
- 
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
     <constant name="struts.devMode" value="true" />
     <constant name="struts.custom.i18n.resources" value="global" />
     
@@ -17,32 +17,10 @@
         <interceptors>
             <interceptor name="autenticacionInterceptor"
                          class="dgg.ucav.interceptores.AutenticacionInterceptor">
-                <param name="usuarioPredeterminado">dgarcia</param>
-                <param name="contrasenaPredeterminada">dgarcia</param>
             </interceptor>
         </interceptors>
-        
-        <action name="action">
-            <interceptor-ref name="autenticacionInterceptor"/>
-        </action>
-        
-        <action name="Conectar" class="dgg.ucav.acciones.AutenticarAccion" method="conectar">
-            <param name="usuarioPredeterminado">dgarcia</param>
-            <param name="contrasenaPredeterminada">dgarcia</param>
-            <result name="input">/WEB-INF/jsp/authentication.jsp</result>
-            <result type="redirectAction">Proteger</result> 
-        </action>
-
-        <action name="Desconectar" class="dgg.ucav.acciones.AutenticarAccion" method="desconectar">
-            <result type="redirectAction">Inicializar</result> 
-        </action>
-        
-        <action name="Inicializar">
-            <result>/WEB-INF/jsp/authentication.jsp</result>
-        </action>
-        
-        
-        <action name="Proteger">
+        <!-- Página inicio para gestionar -->
+        <action name="manage">
             <interceptor-ref name="createSession"/>
             <interceptor-ref name="defaultStack"/>
             <interceptor-ref name="autenticacionInterceptor"/>
@@ -50,9 +28,14 @@
             <result>/WEB-INF/jsp/manage.jsp</result>
         </action>
         
-        
-        
-        
+        <action name="Conectar" class="dgg.ucav.acciones.AutenticarAccion" method="conectar">
+            <result name="input">/WEB-INF/jsp/authentication.jsp</result>
+            <result type="redirectAction">manage</result> 
+        </action>
+
+        <action name="Desconectar" class="dgg.ucav.acciones.AutenticarAccion" method="desconectar">
+            <result type="redirectAction">authenticate</result> 
+        </action>
         
         <action name="authenticate">
             <result>/WEB-INF/jsp/authentication.jsp</result>
