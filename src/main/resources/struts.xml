@@ -27,7 +27,15 @@
             <result name="autenticacion">/WEB-INF/jsp/authentication.jsp</result>
             <result>/WEB-INF/jsp/manage.jsp</result>
         </action>
-        
+        <!-- Poniendo en navbar.jsp un link a 'buscar'... se hace necesario autenticarse para acceder al menú buscar.
+        <action name="buscar">
+            <interceptor-ref name="createSession"/>
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="autenticacionInterceptor"/>
+            <result name="autenticacion">/WEB-INF/jsp/authentication.jsp</result>
+            <result>/WEB-INF/jsp/search.jsp</result>
+        </action>
+        -->
         <action name="Conectar" class="dgg.ucav.acciones.AutenticarAccion" method="conectar">
             <result name="input">/WEB-INF/jsp/authentication.jsp</result>
             <result type="redirectAction">manage</result> 
@@ -61,7 +69,6 @@
             <result>/WEB-INF/jsp/detail.jsp</result>
         </action>
         <!-- Fin Acciones encadenadas -->
-        
         
         <!-- Acciones encadenadas. Primero selecciona idioma, luego genera 
         Inventory y finalmente carga lista de novedades y abre la página -->

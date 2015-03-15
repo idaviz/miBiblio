@@ -33,9 +33,7 @@
     <body>
         <!-- Barra de navegación -->
         <%@ include file="/WEB-INF/jsp/inc/navbar.jsp" %>
-
         <div class="container">
-
             <!-- Soporte para internacionalización -->
             <s:url id="inventoryEN" namespace="/" action="locale" >
                 <s:param name="request_locale" >en</s:param>
@@ -44,7 +42,6 @@
                 <s:param name="request_locale" >es</s:param>
             </s:url>
             <!-- Fin soporte para internacionalización -->            
-
             <div class="col-xs-12 col-sm-9">
                 <p class="pull-right visible-xs">
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
@@ -54,24 +51,16 @@
                     <p></p>
                 </div>
                 <br>
-                
-                
                 <div>
-                    <h3>Recurso</h3>
-
+                    <h3>Correcto!</h3>
                     Este recurso está protegido, está autenticado;
+                    <s:property value="#sessionMap.user"/>
                     <br/><a href="Desconectar.action">Desconectarse</a>
-                </div>
-                
-                
+                </div>  
                 <br>
                 <br>
-
                 <%@ include file="/WEB-INF/jsp/inc/footer.jsp" %>
             </div>
-
-
         </div>
-
     </body>
 </html>

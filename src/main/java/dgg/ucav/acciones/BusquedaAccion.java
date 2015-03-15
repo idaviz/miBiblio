@@ -15,7 +15,7 @@ import java.util.List;
  * @author David
  */
 public class BusquedaAccion extends ActionSupport implements Preparable, ModelDriven {
-   private Obra obra;
+    private Obra obra;
     private List<Obra> listaObras;
     private List<Obra> listaResultados;
     private int idObraActual;

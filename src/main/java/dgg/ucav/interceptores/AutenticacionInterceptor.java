@@ -31,7 +31,6 @@ public class AutenticacionInterceptor extends AbstractInterceptor {
     public String intercept(ActionInvocation invocation) throws
             Exception {
         System.out.println("En el método del interceptor");
-
         // recuperar los objetos de la sesión
         Map<String, Object> session = invocation.getInvocationContext().getSession();
 
@@ -59,5 +58,4 @@ public class AutenticacionInterceptor extends AbstractInterceptor {
     public void destroy() {
         System.out.println("Despues del método de acción");
     }
-
 }

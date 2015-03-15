@@ -90,10 +90,10 @@ public class ModeloUsuarioDAO extends ModeloDAO {
                 usuario.setUsuario(resultado.getString("usuario"));
             }
 
-            if (resultado.getString("contrasena") == null) {
+            if (resultado.getString("contraseña") == null) {
                 usuario.setContrasena("");
             } else {
-                usuario.setContrasena(resultado.getString("contrasena"));
+                usuario.setContrasena(resultado.getString("contraseña"));
             }
 
             if (resultado.getString("nombre") == null) {
