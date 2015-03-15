@@ -53,12 +53,13 @@
                 <br>
                 <div>
                     <h3>Correcto!</h3>
-                    Este recurso está protegido, está autenticado;
-                    <s:property value="#sessionMap.user"/>
-                    <br/><a href="Desconectar.action">Desconectarse</a>
-                </div>  
-                <br>
-                <br>
+                    <p>Este recurso está protegido, está autenticado;</p>
+                    <s:property value="#session.user" />
+                    
+                        <br/><a href="Desconectar.action">Desconectarse</a>
+                    </div>  
+                    <br>
+                    <br>
                 <%@ include file="/WEB-INF/jsp/inc/footer.jsp" %>
             </div>
         </div>

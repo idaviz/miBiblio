@@ -56,7 +56,6 @@
                 <br>
                 <div>
                     <h4><s:text name="authentication.text" /></h4><br/>
-
                     <s:form class="form-horizontal" theme="bootstrap" method="post" action="Conectar">
                         
                             <div class="form-group">
