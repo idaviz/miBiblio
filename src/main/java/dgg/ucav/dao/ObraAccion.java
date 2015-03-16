@@ -78,4 +78,33 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
         listaObras = (ArrayList<Obra>) ModeloObraDAO.getListaObras();
         return SUCCESS;
     }
+
+    // Añadir, borrar y editar Obras
+    // agregar el obra al modelo
+    public String agregar() {
+        ModeloObraDAO modeloObraDAO = new ModeloObraDAO();
+        ModeloObraDAO.agregarObra(obra);
+        return SUCCESS;
+    }
+
+    // mostrar el formulario en edición
+    public String editar() {
+        return SUCCESS;
+    }
+
+    // modificar una obra
+    public String modificar() {
+        ModeloObraDAO modeloObraDAO = new ModeloObraDAO();
+        modeloObraDAO.modificarObra(obra);
+        return SUCCESS;
+    }
+
+      // eliminar un cliente a partir del parámetro recibido llamado idObra
+
+    public String eliminar() {
+        ModeloObraDAO modeloObraDAO = new ModeloObraDAO();
+        modeloObraDAO.eliminarObra(idObraActual);
+        return SUCCESS;
+    }
+
 }

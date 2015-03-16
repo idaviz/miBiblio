@@ -139,7 +139,7 @@ public class ModeloObraDAO extends ModeloDAO {
         // Devolver la lista de obras 
         return listaNovedades;
     }
-    
+
     // devolver la lista de obras 
     public List<Obra> getListaResultados(String clave) {
         // Variables 
@@ -153,7 +153,7 @@ public class ModeloObraDAO extends ModeloDAO {
             conexion = super.getConnection();
 
             // consulta de lista de obras 
-            consultaString = "SELECT * FROM tb_obra WHERE titulo LIKE '%"+clave+"%'";
+            consultaString = "SELECT * FROM tb_obra WHERE titulo LIKE '%" + clave + "%'";
 
             consulta = conexion.prepareStatement(consultaString);
 
@@ -251,6 +251,69 @@ public class ModeloObraDAO extends ModeloDAO {
         return obra;
     }
 
+    // agregar un obra a la base
+    public int agregarObra(Obra obra) {
+        // Variables
+        PreparedStatement consulta = null;
+        String consultaString = null;
+        int codigoError = 0;
+        try {
+            // Apertura de una conexión
+            conexion = super.getConnection();
+            // Creación de la consulta
+            consultaString = "INSERT INTO cliente (identificador,contrasena) VALUES( ?,  ?)";
+            // Preparación de la consulta
+            consulta = conexion.prepareStatement(consultaString);
+            consulta.setString(1, obra.getIdentificador());
+            consulta.setString(2, cliente.getContrasena());
+
+            // Se vacía el cliente por seguridad
+            cliente = null;
+
+            // Ejecución de la consulta
+            codigoError = consulta.executeUpdate();
+        } catch (Exception e) {
+            codigoError = 0;
+            System.out.println(
+            "Error en la consulta
+de la clase ModeloClienteDAO función agregarCliente
+          
+          
+            ");
+              }
+              finally
+              {
+                     try {
+                // Cierre de la conexión
+                if (resultado != null) {
+
+                    GestionBaseDeDatos.closeResulset(resultado);
+                }
+                if (consulta != null) {
+
+                    GestionBaseDeDatos.closeRequest(consulta);
+                }
+                if (conexion != null) {
+
+                    GestionBaseDeDatos.closeConnection(conexion);
+                }
+            } catch (Exception ex) {
+                System.out.println(
+                "Error en el
+cierre de la conexión con la base de datos en la clase
+                ModeloClienteDAO función agregarCliente
+            
+        
+            
+        
+        ");
+                     }
+              }
+
+              // Devolver el código de error
+              return codigoError;
+    }
+
     // Realizar el mapping relacional hacia objeto 
     public Obra mapperObra(ResultSet resultado) {
         // Variables 
@@ -304,7 +367,7 @@ public class ModeloObraDAO extends ModeloDAO {
             } else {
                 String fechaOriginal = resultado.getString("fechainsercion");
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date date = format.parse(fechaOriginal);            
+                Date date = format.parse(fechaOriginal);
                 obra.setFecha_insercion(date);
             }
 
