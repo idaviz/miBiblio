@@ -261,55 +261,125 @@ public class ModeloObraDAO extends ModeloDAO {
             // Apertura de una conexión
             conexion = super.getConnection();
             // Creación de la consulta
-            consultaString = "INSERT INTO cliente (identificador,contrasena) VALUES( ?,  ?)";
+            consultaString = "INSERT INTO tb_obra (isbn, titulo, subtitulo, idioma, nivel_mre, ruta_portada) VALUES(?,?,?,?,?,?)";
             // Preparación de la consulta
             consulta = conexion.prepareStatement(consultaString);
-            consulta.setString(1, obra.getIdentificador());
-            consulta.setString(2, cliente.getContrasena());
-
+            consulta.setString(1, obra.getIsbn());
+            consulta.setString(2, obra.getTitulo());
+            consulta.setString(3, obra.getSubtitulo());
+            consulta.setString(4, obra.getIdioma());
+            consulta.setString(5, obra.getNivel_mre());
+            consulta.setString(6, obra.getRuta_portada());
             // Se vacía el cliente por seguridad
-            cliente = null;
+            obra = null;
 
             // Ejecución de la consulta
             codigoError = consulta.executeUpdate();
         } catch (Exception e) {
             codigoError = 0;
-            System.out.println(
-            "Error en la consulta
-de la clase ModeloClienteDAO función agregarCliente
-          
-          
-            ");
+            System.out.println("Error en la consultade la clase ModeloObraDAO función agregarObra");
+        } finally {
+            try {
+                // Cierre de la conexión
+                if (resultado != null) {
+                    GestionBaseDeDatos.closeResulset(resultado);
+                }
+                if (consulta != null) {
+                    GestionBaseDeDatos.closeRequest(consulta);
+                }
+                if (conexion != null) {
+                    GestionBaseDeDatos.closeConnection(conexion);
+                }
+            } catch (Exception ex) {
+                System.out.println("Error en el cierre de la conexión con la base de datos en la clase ModeloObraDAO función agregarObra");
+            }
+        }
+        // Devolver el código de error
+        return codigoError;
+    }
+
+    // eliminar un cliente en la base
+    public int eliminarObra(int idObra) {
+        // Variables
+        PreparedStatement consulta = null;
+        String consultaString = null;
+        int codigoError = 0;
+        try {
+            // Apertura de una conexión
+            conexion = super.getConnection();
+            // Eliminar el obra
+            consultaString = "DELETE FROM tb_obra WHERE id_tb_obra = ?";
+            consulta = conexion.prepareStatement(consultaString);
+            consulta.setInt(1, idObra);
+
+            // Ejecución de la consulta
+            codigoError = consulta.executeUpdate();
+        } catch (Exception e) {
+            codigoError = 0;
+            System.out.println("Error en la consulta de la clase ModeloObraDAO función eliminarObra");
+        } finally {
+            try {
+                // Cierre de la conexión
+                if (resultado != null) {
+                    GestionBaseDeDatos.closeResulset(resultado);
+                }
+                if (consulta != null) {
+                    GestionBaseDeDatos.closeRequest(consulta);
+                }
+                if (conexion != null) {
+                    GestionBaseDeDatos.closeConnection(conexion);
+                }
+            } catch (Exception ex) {
+                System.out.println("Error en el cierre de la conexión con la base de datos en la clase ModeloObraDAO función eliminarObra");
+            }
+        }
+
+        // Devolver el código de error
+        return codigoError;
+    }
+
+    // modificar una obra en la base
+    public int modificarObra(Obra obra) {
+        // Variables
+        PreparedStatement consulta = null;
+        String consultaString = null;
+        int codigoError = 0;
+        try {
+            // Apertura de una conexión
+            conexion = super.getConnection();
+            // Creación de la consulta
+            consultaString = "UPDATE obra set isbn = ?, titulo = ?, subtitulo = ?, idioma = ?, nivel_mre = ?, ruta_portada =  ? WHERE  id_tb_obra =  ?";
+            consulta = conexion.prepareStatement(consultaString);
+            consulta.setString(1, obra.getIsbn());
+            consulta.setString(2, obra.getTitulo());
+            consulta.setString(3, obra.getSubtitulo());
+            consulta.setString(4, obra.getIdioma());
+            consulta.setString(5, obra.getNivel_mre());
+            consulta.setString(6, obra.getRuta_portada());
+            // Se vacía el cliente por seguridad
+            obra = null;
+            // Ejecución de la consulta
+            codigoError = consulta.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error en la consulta de la clase ModeloClienteDAO función modificarCliente");
               }
               finally
               {
                      try {
                 // Cierre de la conexión
                 if (resultado != null) {
-
                     GestionBaseDeDatos.closeResulset(resultado);
                 }
                 if (consulta != null) {
-
                     GestionBaseDeDatos.closeRequest(consulta);
                 }
                 if (conexion != null) {
-
                     GestionBaseDeDatos.closeConnection(conexion);
                 }
             } catch (Exception ex) {
-                System.out.println(
-                "Error en el
-cierre de la conexión con la base de datos en la clase
-                ModeloClienteDAO función agregarCliente
-            
-        
-            
-        
-        ");
+                System.out.println("Error en el cierre de la conexión con la base de datos en la clase ModeloObraDAO función modificarObra");
                      }
               }
-
               // Devolver el código de error
               return codigoError;
     }
@@ -379,4 +449,5 @@ cierre de la conexión con la base de datos en la clase
         // Devolver objeto obra 
         return obra;
     }
+
 }

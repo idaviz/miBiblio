@@ -83,7 +83,7 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     // agregar el obra al modelo
     public String agregar() {
         ModeloObraDAO modeloObraDAO = new ModeloObraDAO();
-        ModeloObraDAO.agregarObra(obra);
+        modeloObraDAO.agregarObra(obra);
         return SUCCESS;
     }
 
