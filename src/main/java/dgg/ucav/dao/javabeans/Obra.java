@@ -23,9 +23,13 @@ public class Obra {
     public Obra() {
     }
 
-    public Obra(String id_tb_obra, String tiulo) {
-        this.id_tb_obra = id_tb_obra;
+    public Obra(String titulo, String subtitulo, String isbn, String idioma, String nivel_mre, String ruta_portada) {
         this.titulo = titulo;
+        this.subtitulo = subtitulo;
+        this.isbn = isbn;
+        this.idioma = idioma;
+        this.nivel_mre = nivel_mre;
+        this.ruta_portada = ruta_portada;
     }
 
     public String getId_tb_obra() {

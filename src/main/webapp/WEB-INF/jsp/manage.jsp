@@ -52,14 +52,76 @@
                 </div>
                 <br>
                 <div>
-                    <h3>Correcto!</h3>
-                    <p>Este recurso está protegido, está autenticado;</p>
-                    <s:property value="#session.user" />
-                    
-                        <br/><a href="Desconectar.action">Desconectarse</a>
-                    </div>  
+                    <h4>Agregar una nueva obra</h4>
                     <br>
-                    <br>
+                    <s:form class="form-horizontal" theme="bootstrap" method="post" action="Agregar_Obra">
+                        <div class="form-group">
+                            <label for="isbn" class="col-sm-2 control-label">ISBN</label>
+                            <div class="col-sm-10">
+                                <s:textfield name="isbn" id="isbn" class="form-control" placeholder="ISBN"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="titulo" class="col-sm-2 control-label">Título</label>
+                            <div class="col-sm-10">
+                                <s:textfield name="titulo" id="titulo" class="form-control" placeholder="Título de la obra"/>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subtitulo" class="col-sm-2 control-label">Subtítulo</label>
+                            <div class="col-sm-10">
+                                <s:textfield name="subtitulo" id="subtitulo" class="form-control" placeholder="Subtítulo"/>
+                            </div>
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="idioma" class="col-sm-2 control-label">Idioma</label>
+                            <div class="col-sm-10">
+                                <s:textfield name="idioma" id="idioma" class="form-control" placeholder="Idioma"/>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nivel_mre" class="col-sm-2 control-label">Nivel</label>
+                            <div class="col-sm-10">
+                                <s:textfield name="nivel_mre" id="nivel_mre" class="form-control" placeholder="Nivel"/>
+                            </div>
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="ruta_portada" class="col-sm-2 control-label">Ruta a la portada</label>
+                            <div class="col-sm-10">
+                                <s:textfield name="ruta_portada" id="ruta_portada" class="form-control" placeholder="Ruta a la portada"/>
+                            </div>
+                        </div>
+                            
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <s:submit value="Agregar obra" class="btn btn-primary" type="button"/>
+                            </div>
+                        </div>
+
+                    </s:form>
+                    <hr>
+                    <br>  
+                    <table class="table table-striped table-hover table-bordered">
+                        <tr class="info">
+                            <th>Id</th>
+                            <th>Título</th>
+                            <th>Subtítulo</th>
+                        </tr>
+                        <s:iterator value="listaObras"> 
+                            <tr>
+                                <td><s:property value="isbn"/></td>
+                                <td><s:property value="titulo"/></td>
+                                <td><s:property value="subtitulo"/></td>
+                            </tr>
+                        </s:iterator>
+                    </table>
+                </div>  
+                <br>
+                <br>
                 <%@ include file="/WEB-INF/jsp/inc/footer.jsp" %>
             </div>
         </div>

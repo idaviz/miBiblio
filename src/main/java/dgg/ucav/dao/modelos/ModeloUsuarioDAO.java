@@ -10,14 +10,9 @@ package dgg.ucav.dao.modelos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 import dgg.ucav.dao.cajaherramientas.GestionBaseDeDatos;
 import dgg.ucav.dao.javabeans.Usuario;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ModeloUsuarioDAO extends ModeloDAO {
 

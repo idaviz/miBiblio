@@ -262,6 +262,7 @@ public class ModeloObraDAO extends ModeloDAO {
             conexion = super.getConnection();
             // Creación de la consulta
             consultaString = "INSERT INTO tb_obra (isbn, titulo, subtitulo, idioma, nivel_mre, ruta_portada) VALUES(?,?,?,?,?,?)";
+            
             // Preparación de la consulta
             consulta = conexion.prepareStatement(consultaString);
             consulta.setString(1, obra.getIsbn());
@@ -270,14 +271,16 @@ public class ModeloObraDAO extends ModeloDAO {
             consulta.setString(4, obra.getIdioma());
             consulta.setString(5, obra.getNivel_mre());
             consulta.setString(6, obra.getRuta_portada());
-            // Se vacía el cliente por seguridad
+            System.out.println(consulta);
+            // Se vacía la obra por seguridad
             obra = null;
-
             // Ejecución de la consulta
             codigoError = consulta.executeUpdate();
+            
         } catch (Exception e) {
             codigoError = 0;
-            System.out.println("Error en la consultade la clase ModeloObraDAO función agregarObra");
+            System.out.println("Error en el INSERT de la clase ModeloObraDAO función agregarObra");
+            System.out.println(consulta);
         } finally {
             try {
                 // Cierre de la conexión

@@ -14,13 +14,15 @@
         Esto hace que cualquier acción utilice Listado_Cliente como respuesta
         <default-action-ref name="Listado_Cliente"/>
         -->
+        
+        <!-- Interceptor -->
         <interceptors>
             <interceptor name="autenticacionInterceptor"
                          class="dgg.ucav.interceptores.AutenticacionInterceptor">
             </interceptor>
         </interceptors>
         <!-- Página inicio para gestionar -->
-        <action name="manage">
+        <action name="manage" method="listado" class="dgg.ucav.dao.ObraAccion" >
             <interceptor-ref name="createSession"/>
             <interceptor-ref name="defaultStack"/>
             <interceptor-ref name="autenticacionInterceptor"/>
@@ -36,6 +38,14 @@
             <result>/WEB-INF/jsp/search.jsp</result>
         </action>
         -->
+        
+        <!-- Agregar Obra-->
+        <action name="Agregar_Obra" class="dgg.ucav.dao.ObraAccion" method="agregar">
+            <result name="input">/WEB-INF/jsp/manage.jsp</result>
+            <result name="success" type="redirectAction">manage</result>
+        </action>
+        
+        
         <action name="Conectar" class="dgg.ucav.acciones.AutenticarAccion" method="conectar">
             <result name="input">/WEB-INF/jsp/authentication.jsp</result>
             <result type="redirectAction">manage</result> 
