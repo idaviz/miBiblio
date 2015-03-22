@@ -75,6 +75,16 @@
                         </td>
                     </tr>
                 </table>
+                
+                <br>
+                <s:url action="inventory" var="inventoryInputLink" />
+                <ul style="list-style: none;">
+                    <li class="pull-right"><a href="${inventoryInputLink}"><s:text name="freelink.backtoinventory" /> <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a></li>
+                </ul>
+                <br>
+                                
+                                
+                                
                 <%@ include file="/WEB-INF/jsp/inc/footer.jsp" %>
             </div>
         </div>

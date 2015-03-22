@@ -37,14 +37,28 @@
             <result name="autenticacion">/WEB-INF/jsp/authentication.jsp</result>
             <result>/WEB-INF/jsp/search.jsp</result>
         </action>
-        -->
-        
-        <!-- Agregar Obra-->
+        -->        
+        <!-- CRUD Obra-->
         <action name="Agregar_Obra" class="dgg.ucav.dao.ObraAccion" method="agregar">
             <result name="input">/WEB-INF/jsp/manage.jsp</result>
             <result name="success" type="redirectAction">manage</result>
         </action>
         
+        <action name="Editar_Obra" class="dgg.ucav.dao.ObraAccion" method="editar">
+			<interceptor-ref name="paramsPrepareParamsStack"/>
+            <result name="success">/jsp/EditarCliente.jsp</result>
+        </action>
+        
+        <action name="Modificar_Obra" class="dgg.ucav.dao.ObraAccion" method="modificar">
+        	<result name="input">/jsp/EditarCliente.jsp</result>
+            <result name="success" type="redirectAction">manage</result>
+        </action>
+        
+        <action name="Eliminar_Cliente" class="dgg.ucav.dao.ObraAccion" method="eliminar">
+            <result name="success" type="redirectAction">manage</result>
+        </action>
+        
+        <!-- Fin CRUD Obra-->
         
         <action name="Conectar" class="dgg.ucav.acciones.AutenticarAccion" method="conectar">
             <result name="input">/WEB-INF/jsp/authentication.jsp</result>
@@ -102,5 +116,4 @@
         </action>
         <!-- Fin Acciones encadenadas -->
     </package>
- 
 </struts>

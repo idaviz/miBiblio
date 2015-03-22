@@ -59,7 +59,7 @@
                     <s:form theme="bootstrap" method="POST" action="search.result">
                         <div class="input-group">
                             <span class="input-group-btn">
-                                <s:submit key="Buscar!" class="btn btn-primary" type="button"/>
+                                <s:submit value="buscar" class="btn btn-primary" type="button"/>
                             </span>
                             <s:textfield name="palabraBusqueda" class="form-control" placeholder="Palabras de búsqueda..."/>
                         </div><!-- /input-group -->

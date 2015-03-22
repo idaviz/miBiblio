@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Logger;
 
 public class ModeloObraDAO extends ModeloDAO {
 
@@ -97,7 +98,7 @@ public class ModeloObraDAO extends ModeloDAO {
             conexion = super.getConnection();
 
             // consulta de lista de obras 
-            consultaString = "SELECT * FROM tb_obra WHERE 1 ORDER BY fechainsercion DESC LIMIT 10";
+            consultaString = "SELECT * FROM tb_obra WHERE 1 ORDER BY fecha_insercion DESC LIMIT 10";
 
             consulta = conexion.prepareStatement(consultaString);
 
@@ -261,21 +262,22 @@ public class ModeloObraDAO extends ModeloDAO {
             // Apertura de una conexión
             conexion = super.getConnection();
             // Creación de la consulta
-            consultaString = "INSERT INTO tb_obra (isbn, titulo, subtitulo, idioma, nivel_mre, ruta_portada) VALUES(?,?,?,?,?,?)";
-            
+            consultaString = "INSERT INTO tb_obra (isbn, titulo, subtitulo, idioma, nivel_mre, ruta_portada) VALUES (?,?,?,?,?,?)";
+     
             // Preparación de la consulta
-            consulta = conexion.prepareStatement(consultaString);
+            consulta=conexion.prepareStatement(consultaString);
             consulta.setString(1, obra.getIsbn());
             consulta.setString(2, obra.getTitulo());
             consulta.setString(3, obra.getSubtitulo());
             consulta.setString(4, obra.getIdioma());
             consulta.setString(5, obra.getNivel_mre());
             consulta.setString(6, obra.getRuta_portada());
-            System.out.println(consulta);
+            //System.out.println(consulta);
             // Se vacía la obra por seguridad
             obra = null;
             // Ejecución de la consulta
             codigoError = consulta.executeUpdate();
+            //consulta.executeUpdate();
             
         } catch (Exception e) {
             codigoError = 0;
@@ -393,10 +395,16 @@ public class ModeloObraDAO extends ModeloDAO {
         Obra obra = new Obra();
 
         try {
-            if (resultado.getString("id_tb_obra") == null) {
-                obra.setId_tb_obra("");
+            if (resultado.getString("id_tb_obra")== null) {
+                obra.setId_tb_obra(0);
             } else {
-                obra.setId_tb_obra(resultado.getString("id_tb_obra"));
+                obra.setId_tb_obra(resultado.getInt("id_tb_obra"));
+            }
+
+            if (resultado.getString("isbn") == null) {
+                obra.setIsbn("");
+            } else {
+                obra.setIsbn(resultado.getString("isbn"));
             }
 
             if (resultado.getString("titulo") == null) {
@@ -429,28 +437,23 @@ public class ModeloObraDAO extends ModeloDAO {
                 obra.setRuta_portada(resultado.getString("ruta_portada"));
             }
 
-            if (resultado.getString("isbn") == null) {
-                obra.setIsbn("");
-            } else {
-                obra.setIsbn(resultado.getString("isbn"));
-            }
-
-            if (resultado.getString("fechainsercion") == null) {
+            if (resultado.getString("fecha_insercion") == null) {
                 obra.setFecha_insercion(null);
             } else {
-                String fechaOriginal = resultado.getString("fechainsercion");
+                String fechaOriginal = resultado.getString("fecha_insercion");
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = format.parse(fechaOriginal);
                 obra.setFecha_insercion(date);
             }
 
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e) {
             //Si se produce un error durante el mapping de atributos 
             obra = null;
             System.out.println("Error en el mapping de atributos de una obra de la clase ModeloObraDAO, función mapperObra");
+        } catch (ParseException ex) {
+            System.out.println("Error en el mapping del atributo fecha_insercion de una obra de la clase ModeloObraDAO, función mapperObra");
         }
         // Devolver objeto obra 
         return obra;
     }
-
 }

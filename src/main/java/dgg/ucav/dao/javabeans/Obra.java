@@ -11,9 +11,9 @@ import java.util.Date;
  */
 public class Obra {
 
-    private String id_tb_obra;
-    private String titulo;
+    private int id_tb_obra;
     private String isbn;
+    private String titulo;
     private String subtitulo;
     private String idioma;
     private String nivel_mre;
@@ -32,11 +32,11 @@ public class Obra {
         this.ruta_portada = ruta_portada;
     }
 
-    public String getId_tb_obra() {
+    public int getId_tb_obra() {
         return id_tb_obra;
     }
 
-    public void setId_tb_obra(String id_tb_obra) {
+    public void setId_tb_obra(int id_tb_obra) {
         this.id_tb_obra = id_tb_obra;
     }
 

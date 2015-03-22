@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="struts2, twitter, bootstrap, plugin, showcase" />
         <meta name="description" content="A Showcase for the Struts2 Bootstrap Plugin" />
-        <title><s:text name="search.title" /></title>
+        <title><s:text name="manage.title" /></title>
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
@@ -56,46 +56,46 @@
                     <br>
                     <s:form class="form-horizontal" theme="bootstrap" method="post" action="Agregar_Obra">
                         <div class="form-group">
-                            <label for="isbn" class="col-sm-2 control-label">ISBN</label>
+                            <label for="isbn" class="col-sm-2 control-label"><s:text name="form.isbn" /></label>
                             <div class="col-sm-10">
                                 <s:textfield name="isbn" id="isbn" class="form-control" placeholder="ISBN"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="titulo" class="col-sm-2 control-label">Título</label>
+                            <label for="titulo" class="col-sm-2 control-label"><s:text name="form.title" /></label>
                             <div class="col-sm-10">
                                 <s:textfield name="titulo" id="titulo" class="form-control" placeholder="Título de la obra"/>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="subtitulo" class="col-sm-2 control-label">Subtítulo</label>
+                            <label for="subtitulo" class="col-sm-2 control-label"><s:text name="form.subtitle" /></label>
                             <div class="col-sm-10">
                                 <s:textfield name="subtitulo" id="subtitulo" class="form-control" placeholder="Subtítulo"/>
                             </div>
                         </div>
-                            
+
                         <div class="form-group">
-                            <label for="idioma" class="col-sm-2 control-label">Idioma</label>
+                            <label for="idioma" class="col-sm-2 control-label"><s:text name="form.language" /></label>
                             <div class="col-sm-10">
                                 <s:textfield name="idioma" id="idioma" class="form-control" placeholder="Idioma"/>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="nivel_mre" class="col-sm-2 control-label">Nivel</label>
+                            <label for="nivel_mre" class="col-sm-2 control-label"><s:text name="form.level" /></label>
                             <div class="col-sm-10">
                                 <s:textfield name="nivel_mre" id="nivel_mre" class="form-control" placeholder="Nivel"/>
                             </div>
                         </div>
-                            
+
                         <div class="form-group">
-                            <label for="ruta_portada" class="col-sm-2 control-label">Ruta a la portada</label>
+                            <label for="ruta_portada" class="col-sm-2 control-label"><s:text name="form.path" /></label>
                             <div class="col-sm-10">
                                 <s:textfield name="ruta_portada" id="ruta_portada" class="form-control" placeholder="Ruta a la portada"/>
                             </div>
                         </div>
-                            
+
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <s:submit value="Agregar obra" class="btn btn-primary" type="button"/>
@@ -107,15 +107,23 @@
                     <br>  
                     <table class="table table-striped table-hover table-bordered">
                         <tr class="info">
-                            <th>Id</th>
-                            <th>Título</th>
-                            <th>Subtítulo</th>
+                            <th><s:text name="form.isbn" /></th>
+                            <th><s:text name="form.title" /></th>
+                            <th><s:text name="form.subtitle" /></th>
+                            <th><s:text name="form.language" /></th>
+                            <th><s:text name="form.level" /></th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
                         </tr>
                         <s:iterator value="listaObras"> 
                             <tr>
                                 <td><s:property value="isbn"/></td>
                                 <td><s:property value="titulo"/></td>
                                 <td><s:property value="subtitulo"/></td>
+                                <td><s:property value="idioma"/></td>
+                                <td><s:property value="nivel_mre"/></td>
+                                <td><a href="Editar_Obra.action?idObraActual=${id_tb_obra}"/><img src="imagenes/editarcliente.png" alt="Editar" title="Editar" border="0"/></a></td>
+                                <td><a href="Eliminar_Obra.action?idObraActual=${id_tb_obra}"/><img src="imagenes/eliminarcliente.png" alt="Eliminar" title="Eliminar" border="0"/></a></td>
                             </tr>
                         </s:iterator>
                     </table>
