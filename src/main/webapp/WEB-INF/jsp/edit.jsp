@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="struts2, twitter, bootstrap, plugin, showcase" />
         <meta name="description" content="A Showcase for the Struts2 Bootstrap Plugin" />
-        <title><s:text name="manage.title"/></title>
+        <title><s:text name="edit.title" /></title>
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
@@ -47,89 +47,65 @@
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                 </p>
                 <div class="jumbotron">
-                    <h1><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <s:text name="manage.title" /></h1>
+                    <h1><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <s:text name="edit.title" /></h1>
                     <p></p>
                 </div>
                 <br>
                 <div>
-                    <h4>Agregar una nueva obra</h4>
+                    <h4>Modificar obra</h4>
                     <br>
-                    <s:form class="form-horizontal" theme="bootstrap" method="post" action="Agregar_Obra">
+                    <s:form class="form-horizontal" theme="bootstrap" method="post" action="Modificar_Obra">
                         
-                        <div class="form-group">
+                        <s:hidden name="id_tb_obra" id="id_tb_obra"/>
+                        
+                        <div class="form-group has-success">
                             <label for="isbn" class="col-sm-2 control-label"><s:text name="form.isbn" /></label>
                             <div class="col-sm-10">
                                 <s:textfield name="isbn" id="isbn" class="form-control" placeholder="ISBN"/>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group has-success">
                             <label for="titulo" class="col-sm-2 control-label"><s:text name="form.title" /></label>
                             <div class="col-sm-10">
                                 <s:textfield name="titulo" id="titulo" class="form-control" placeholder="Título de la obra"/>
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group has-success">
                             <label for="subtitulo" class="col-sm-2 control-label"><s:text name="form.subtitle" /></label>
                             <div class="col-sm-10">
                                 <s:textfield name="subtitulo" id="subtitulo" class="form-control" placeholder="Subtítulo"/>
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group has-success">
                             <label for="idioma" class="col-sm-2 control-label"><s:text name="form.language" /></label>
                             <div class="col-sm-10">
                                 <s:textfield name="idioma" id="idioma" class="form-control" placeholder="Idioma"/>
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group has-success">
                             <label for="nivel_mre" class="col-sm-2 control-label"><s:text name="form.level" /></label>
                             <div class="col-sm-10">
                                 <s:textfield name="nivel_mre" id="nivel_mre" class="form-control" placeholder="Nivel"/>
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group has-success">
                             <label for="ruta_portada" class="col-sm-2 control-label"><s:text name="form.path" /></label>
                             <div class="col-sm-10">
                                 <s:textfield name="ruta_portada" id="ruta_portada" class="form-control" placeholder="Ruta a la portada"/>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <s:submit value="Agregar obra" class="btn btn-primary" type="button"/>
+                                <s:submit value="Guardar cambios" class="btn btn-primary" type="button"/>
                             </div>
                         </div>
 
                     </s:form>
                     <hr>
-                    <br>  
-                    <table class="table table-striped table-hover table-bordered">
-                        <tr class="info">
-                            <th>Id</th>
-                            <th><s:text name="form.isbn" /></th>
-                            <th><s:text name="form.title" /></th>
-                            <th><s:text name="form.subtitle" /></th>
-                            <th><s:text name="form.language" /></th>
-                            <th><s:text name="form.level" /></th>
-                            <th><s:text name="form.modify" /></th>
-                            <th><s:text name="form.delete" /></th>
-                        </tr>
-                        <s:iterator value="listaObras"> 
-                            <tr>
-                                <td><s:property value="id_tb_obra"/></td>
-                                <td><s:property value="isbn"/></td>
-                                <td><s:property value="titulo"/></td>
-                                <td><s:property value="subtitulo"/></td>
-                                <td><s:property value="idioma"/></td>
-                                <td><s:property value="nivel_mre"/></td>
-                                <td><a href="Editar_Obra.action?id_tb_obra=${id_tb_obra}"/><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a></td>
-                                <td><a href="Eliminar_Obra.action?id_tb_obra=${id_tb_obra}"/><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
-                            </tr>
-                        </s:iterator>
-                    </table>
                 </div>  
                 <br>
                 <br>

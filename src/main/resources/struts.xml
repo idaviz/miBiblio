@@ -45,16 +45,18 @@
         </action>
         
         <action name="Editar_Obra" class="dgg.ucav.dao.ObraAccion" method="editar">
-			<interceptor-ref name="paramsPrepareParamsStack"/>
-            <result name="success">/jsp/EditarCliente.jsp</result>
+            <interceptor-ref name="paramsPrepareParamsStack"/>
+            <result name="success">/WEB-INF/jsp/edit.jsp</result>
         </action>
         
         <action name="Modificar_Obra" class="dgg.ucav.dao.ObraAccion" method="modificar">
-        	<result name="input">/jsp/EditarCliente.jsp</result>
+            
+            <result name="input">/WEB-INF/jsp/edit.jsp</result>
             <result name="success" type="redirectAction">manage</result>
         </action>
         
-        <action name="Eliminar_Cliente" class="dgg.ucav.dao.ObraAccion" method="eliminar">
+        <action name="Eliminar_Obra" class="dgg.ucav.dao.ObraAccion" method="eliminar">
+            <interceptor-ref name="paramsPrepareParamsStack"/>
             <result name="success" type="redirectAction">manage</result>
         </action>
         
@@ -66,7 +68,7 @@
         </action>
 
         <action name="Desconectar" class="dgg.ucav.acciones.AutenticarAccion" method="desconectar">
-            <result type="redirectAction">authenticate</result> 
+            <result type="redirectAction">index</result> 
         </action>
         
         <action name="authenticate">

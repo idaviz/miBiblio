@@ -18,7 +18,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Logger;
 
 public class ModeloObraDAO extends ModeloDAO {
 
@@ -304,7 +303,7 @@ public class ModeloObraDAO extends ModeloDAO {
     }
 
     // eliminar un cliente en la base
-    public int eliminarObra(int idObra) {
+    public int eliminarObra(int id_tb_obra) {
         // Variables
         PreparedStatement consulta = null;
         String consultaString = null;
@@ -313,12 +312,14 @@ public class ModeloObraDAO extends ModeloDAO {
             // Apertura de una conexión
             conexion = super.getConnection();
             // Eliminar el obra
-            consultaString = "DELETE FROM tb_obra WHERE id_tb_obra = ?";
+            consultaString = "DELETE FROM tb_obra WHERE id_tb_obra=?";
             consulta = conexion.prepareStatement(consultaString);
-            consulta.setInt(1, idObra);
+            consulta.setInt(1, id_tb_obra);
 
             // Ejecución de la consulta
             codigoError = consulta.executeUpdate();
+            System.out.println(consultaString);
+            System.out.println(consulta);
         } catch (Exception e) {
             codigoError = 0;
             System.out.println("Error en la consulta de la clase ModeloObraDAO función eliminarObra");
@@ -353,7 +354,7 @@ public class ModeloObraDAO extends ModeloDAO {
             // Apertura de una conexión
             conexion = super.getConnection();
             // Creación de la consulta
-            consultaString = "UPDATE obra set isbn = ?, titulo = ?, subtitulo = ?, idioma = ?, nivel_mre = ?, ruta_portada =  ? WHERE  id_tb_obra =  ?";
+            consultaString = "UPDATE tb_obra SET isbn=?, titulo=?, subtitulo=?, idioma=?, nivel_mre=?, ruta_portada=? WHERE id_tb_obra=?";
             consulta = conexion.prepareStatement(consultaString);
             consulta.setString(1, obra.getIsbn());
             consulta.setString(2, obra.getTitulo());
@@ -361,12 +362,15 @@ public class ModeloObraDAO extends ModeloDAO {
             consulta.setString(4, obra.getIdioma());
             consulta.setString(5, obra.getNivel_mre());
             consulta.setString(6, obra.getRuta_portada());
+            consulta.setInt(7, obra.getId_tb_obra());
+            
             // Se vacía el cliente por seguridad
             obra = null;
             // Ejecución de la consulta
             codigoError = consulta.executeUpdate();
         } catch (Exception e) {
-            System.out.println("Error en la consulta de la clase ModeloClienteDAO función modificarCliente");
+            System.out.println(consulta);
+            System.out.println("Error en la consulta de la clase ModeloObraDAO función modificarObra");
               }
               finally
               {

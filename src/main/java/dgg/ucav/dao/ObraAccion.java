@@ -20,7 +20,7 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
 
     private Obra obra;
     private List<Obra> listaObras;
-    private int idObraActual;
+    private int id_tb_obra;
 
     /**
      *
@@ -30,12 +30,11 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     public void prepare() throws Exception {
         ModeloObraDAO modeloObraDAO = new ModeloObraDAO();
         // en creación, crear un nuevo objeto vacío 
-        if (idObraActual == 0) {
+        if (id_tb_obra == 0) {
             obra = new Obra();
         } // en modificación, devolver la información del objeto 
         else {
-
-            obra = modeloObraDAO.getObra(idObraActual);
+            obra = modeloObraDAO.getObra(id_tb_obra);
         }
     }
 
@@ -44,12 +43,12 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
         return obra;
     }
 
-    public int getIdObraActual() {
-        return idObraActual;
+    public int getId_tb_obra() {
+        return id_tb_obra;
     }
 
-    public void setIdObraActual(int idObraActual) {
-        this.idObraActual = idObraActual;
+    public void setId_tb_obra(int id_tb_obra) {
+        this.id_tb_obra = id_tb_obra;
     }
 
     public Obra getObra() {
@@ -82,6 +81,7 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     // Añadir, borrar y editar Obras
     // agregar el obra al modelo
     public String agregar() {
+        
         ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
         ModeloObraDAO.agregarObra(obra);
         return SUCCESS;
@@ -99,11 +99,12 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
         return SUCCESS;
     }
 
-      // eliminar un cliente a partir del parámetro recibido llamado idObra
+      // eliminar una obra a partir del parámetro recibido llamado idObra
 
     public String eliminar() {
         ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
-        ModeloObraDAO.eliminarObra(idObraActual);
+        ModeloObraDAO.eliminarObra(this.id_tb_obra);
+        System.out.println("en ObraAccion.eliminar() recibo id_tb_obra="+this.id_tb_obra);
         return SUCCESS;
     }
 }
