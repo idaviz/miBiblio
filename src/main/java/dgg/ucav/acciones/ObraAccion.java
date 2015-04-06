@@ -88,16 +88,17 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     // agregar el obra al modelo
     public String agregar() {
 
-        if (this.obra.getIsbn().equals("")) {
-            System.out.println("Error en el isbn");
-            addFieldError("isbn", "ISBN no puede estar en blanco");
-            //addActionError("Se han encontrado errores en el campo ISBN");
+        if (this.obra.getIsbn().equals("")|| this.obra.getIsbn().length()<1 || this.obra.getIsbn().length()>12) {
+            addFieldError("isbn", "ISBN debe contener entre 1 y 12 caracteres");
+            return "input";
+        }else if (this.obra.getTitulo().equals("")|| this.obra.getTitulo().length()<1 || this.obra.getTitulo().length()>50){
+            addFieldError("title", "El Título debe contener entre 1 y 50 caracteres.");
             return "input";
         } else {
             ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
             ModeloObraDAO.agregarObra(obra);
-            addActionMessage("Obra añadida con éxito");
-            return "success";
+            addActionMessage(getText("actionmessage.insert"));
+            return SUCCESS;
         }
     }
 
@@ -110,6 +111,7 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     public String modificar() {
         ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
         ModeloObraDAO.modificarObra(obra);
+        addActionMessage(getText("actionmessage.update"));
         return SUCCESS;
     }
 
@@ -117,7 +119,7 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     public String eliminar() {
         ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
         ModeloObraDAO.eliminarObra(this.id_tb_obra);
-        addActionMessage("Obra eliminada con éxito");
+        addActionMessage(getText("actionmessage.delete"));
         return SUCCESS;
     }
             

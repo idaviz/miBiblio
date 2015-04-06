@@ -57,58 +57,24 @@
                     <br>
                     <s:actionerror theme="bootstrap"/>
                     <s:if test="hasActionMessages()">
-                        <div class="welcome">
-                            <s:actionmessage/>
-                        </div>
+                        <s:actionmessage theme="bootstrap"/>
                     </s:if>
-                    <s:form class="form-horizontal" theme="bootstrap" method="post" action="Agregar_Obra">
-                        <div class="form-group">
-                            <label for="isbn" class="col-sm-2 control-label"><s:text name="form.isbn" /></label>
-                            <div class="col-sm-10">
-                                <s:textfield name="isbn" id="isbn" class="form-control" placeholder="ISBN" tooltip="ISBN"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="titulo" class="col-sm-2 control-label"><s:text name="form.title" /></label>
-                            <div class="col-sm-10">
-                                <s:textfield name="titulo" id="titulo" class="form-control" placeholder="Título de la obra"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="subtitulo" class="col-sm-2 control-label"><s:text name="form.subtitle" /></label>
-                            <div class="col-sm-10">
-                                <s:textfield name="subtitulo" id="subtitulo" class="form-control" placeholder="Subtítulo"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="idioma" class="col-sm-2 control-label"><s:text name="form.language" /></label>
-                            <div class="col-sm-10">
-                                <s:textfield name="idioma" id="idioma" class="form-control" placeholder="Idioma"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="nivel_mre" class="col-sm-2 control-label"><s:text name="form.level" /></label>
-                            <div class="col-sm-10">
-                                <s:textfield name="nivel_mre" id="nivel_mre" class="form-control" placeholder="Nivel"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="ruta_portada" class="col-sm-2 control-label"><s:text name="form.path" /></label>
-                            <div class="col-sm-10">
-                                <s:textfield name="ruta_portada" id="ruta_portada" class="form-control" placeholder="Ruta a la portada"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <s:submit value="Agregar obra" class="btn btn-primary" type="button"/>
-                            </div>
-                        </div>
-
+                    <s:form class="form-vertical" theme="bootstrap" cssClass="form-vertical" method="post" action="Agregar_Obra" >
+                        <s:textfield name="isbn" id="isbn" label="%{getText('form.isbn')}" class="form-control" placeholder="ISBN" tooltip="%{getText('form.isbn')}"/>
+                        <s:textfield name="titulo" id="titulo" label="%{getText('form.title')}" class="form-control" placeholder="Título de la obra"/>
+                        <s:textfield name="subtitulo" id="subtitulo" label="%{getText('form.subtitle')}" class="form-control" placeholder="Subtítulo"/>
+                        <s:select
+                        label="%{getText('form.language')}"
+                        list="{'English', 'German', 'Spanish'}"
+                        name="idioma"
+                        id="idioma" 
+                        class="form-control"
+                        emptyOption="true"
+                        headerKey="None"
+                        headerValue="None"/>
+                        <s:textfield name="nivel_mre" id="nivel_mre" label="%{getText('form.level')}" class="form-control" placeholder="Nivel"/>
+                        <s:textfield name="ruta_portada" id="ruta_portada" label="%{getText('form.path')}" class="form-control" placeholder="Ruta a la portada"/>
+                        <s:submit value="Agregar obra" class="btn btn-primary" cssClass="btn btn-primary" type="button"/>
                     </s:form>
                     <hr>
                     <br>

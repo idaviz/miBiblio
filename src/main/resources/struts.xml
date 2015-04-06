@@ -40,7 +40,8 @@
         <!-- CRUD Obra-->
         <action name="Agregar_Obra" class="dgg.ucav.acciones.ObraAccion" method="agregar">
             <result name="input">/WEB-INF/jsp/manage.jsp</result>
-            <result name="success" type="redirectAction">manage</result>
+            <!--<result name="success" type="redirectAction">manage</result>-->
+            <result name="success">/WEB-INF/jsp/manage.jsp</result>
         </action>
         
         <action name="Editar_Obra" class="dgg.ucav.acciones.ObraAccion" method="editar">
@@ -51,12 +52,12 @@
         <action name="Modificar_Obra" class="dgg.ucav.acciones.ObraAccion" method="modificar">
             
             <result name="input">/WEB-INF/jsp/edit.jsp</result>
-            <result name="success" type="redirectAction">manage</result>
+            <result name="success">/WEB-INF/jsp/manage.jsp</result>
         </action>
         
         <action name="Eliminar_Obra" class="dgg.ucav.acciones.ObraAccion" method="eliminar">
             <interceptor-ref name="paramsPrepareParamsStack"/>
-            <result name="success" type="redirectAction">manage</result>
+            <result name="success">/WEB-INF/jsp/manage.jsp</result>
         </action>
         <!-- Fin CRUD Obra-->
         
