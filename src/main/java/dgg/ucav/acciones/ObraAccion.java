@@ -24,6 +24,60 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     private Obra obra;
     private List<Obra> listaObras;
     private int id_tb_obra;
+    private String isbn;
+    private String titulo;
+    private String subtitulo;
+    private String nivel_mre;
+    private String ruta_portada;
+    private String idioma;
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getSubtitulo() {
+        return subtitulo;
+    }
+
+    public void setSubtitulo(String subtitulo) {
+        this.subtitulo = subtitulo;
+    }
+
+    public String getNivel_mre() {
+        return nivel_mre;
+    }
+
+    public void setNivel_mre(String nivel_mre) {
+        this.nivel_mre = nivel_mre;
+    }
+
+    public String getRuta_portada() {
+        return ruta_portada;
+    }
+
+    public void setRuta_portada(String ruta_portada) {
+        this.ruta_portada = ruta_portada;
+    }
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 
     /**
      *
@@ -42,7 +96,7 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     }
 
     /**
-     * 
+     *
      * @return Objeto Obra
      */
     @Override
@@ -88,16 +142,19 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     // agregar el obra al modelo
     public String agregar() {
 
-        if (this.obra.getIsbn().equals("")|| this.obra.getIsbn().length()<1 || this.obra.getIsbn().length()>12) {
-            addFieldError("isbn", "ISBN debe contener entre 1 y 12 caracteres");
+        if (this.obra.getIsbn().equals("") || this.obra.getIsbn().length() < 1 || this.obra.getIsbn().length() > 50) {
+            addFieldError("isbn", "ISBN debe contener entre 1 y 50 caracteres");
             return "input";
-        }else if (this.obra.getTitulo().equals("")|| this.obra.getTitulo().length()<1 || this.obra.getTitulo().length()>50){
+        } else if (this.obra.getTitulo().equals("") || this.obra.getTitulo().length() < 1 || this.obra.getTitulo().length() > 50) {
             addFieldError("title", "El Título debe contener entre 1 y 50 caracteres.");
+            return "input";
+        } else if (this.obra.getSubtitulo().equals("") || this.obra.getSubtitulo().length() < 1 || this.obra.getSubtitulo().length() > 100) {
+            addFieldError("subtitle", "El Subítulo debe contener entre 1 y 100 caracteres.");
             return "input";
         } else {
             ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
             ModeloObraDAO.agregarObra(obra);
-            addActionMessage(getText("actionmessage.insert"));
+            addActionMessage(this.obra.getTitulo() + ": " + getText("actionmessage.insert"));
             return SUCCESS;
         }
     }
@@ -109,18 +166,29 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
 
     // modificar una obra
     public String modificar() {
-        ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
-        ModeloObraDAO.modificarObra(obra);
-        addActionMessage(getText("actionmessage.update"));
-        return SUCCESS;
+        if (this.obra.getIsbn().equals("") || this.obra.getIsbn().length() < 1 || this.obra.getIsbn().length() > 50) {
+            addFieldError("isbn", "ISBN debe contener entre 1 y 50 caracteres");
+            return "input";
+        } else if (this.obra.getTitulo().equals("") || this.obra.getTitulo().length() < 1 || this.obra.getTitulo().length() > 50) {
+            addFieldError("title", "El Título debe contener entre 1 y 50 caracteres.");
+            return "input";
+        } else if (this.obra.getSubtitulo().equals("") || this.obra.getSubtitulo().length() < 1 || this.obra.getSubtitulo().length() > 100) {
+            addFieldError("subtitle", "El Subítulo debe contener entre 1 y 100 caracteres.");
+            return "input";
+        } else {
+            ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
+            ModeloObraDAO.modificarObra(obra);
+            addActionMessage(this.obra.getTitulo() + ": " + getText("actionmessage.update"));
+            return SUCCESS;
+        }
     }
 
     // eliminar una obra a partir del parámetro recibido llamado idObra
     public String eliminar() {
         ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
         ModeloObraDAO.eliminarObra(this.id_tb_obra);
-        addActionMessage(getText("actionmessage.delete"));
+        addActionMessage(this.obra.getTitulo() + ": " + getText("actionmessage.delete"));
         return SUCCESS;
     }
-            
+
 }

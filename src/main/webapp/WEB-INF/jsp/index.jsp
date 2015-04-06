@@ -59,36 +59,23 @@
                             <h1><span class="glyphicon glyphicon-book" aria-hidden="true"></span> miBiblio</h1>
                             <p><s:text name="jumbotron.introtext" /></p>
                     </div>
+                    <br>
+                    <br>
                     <div class="row">
                         <div class="col-xs-6 col-lg-4">
-                            <h2>Heading</h2>
+                            <h2><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <s:text name="inventory.title"/></h2>
                             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                            <p><a class="btn btn-default" href="${inventoryInputLink}" role="button"><s:text name="index.details" /></a></p>
                         </div><!--/.col-xs-6.col-lg-4-->
                         <div class="col-xs-6 col-lg-4">
-                            <h2>Heading</h2>
+                            <h2><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <s:text name="search.title" /></h2>
                             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                            <p><a class="btn btn-default" href="${searchInputLink}" role="button"><s:text name="index.details" /></a></p>
                         </div><!--/.col-xs-6.col-lg-4-->
                         <div class="col-xs-6 col-lg-4">
-                            <h2>Heading</h2>
+                            <h2><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <s:text name="manage.title" /></h2>
                             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                        </div><!--/.col-xs-6.col-lg-4-->
-                        <div class="col-xs-6 col-lg-4">
-                            <h2>Heading</h2>
-                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                        </div><!--/.col-xs-6.col-lg-4-->
-                        <div class="col-xs-6 col-lg-4">
-                            <h2>Heading</h2>
-                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                        </div><!--/.col-xs-6.col-lg-4-->
-                        <div class="col-xs-6 col-lg-4">
-                            <h2>Heading</h2>
-                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                            <p><a class="btn btn-default" href="${manageInputLink}" role="button"><s:text name="index.details" /></a></p>
                         </div><!--/.col-xs-6.col-lg-4-->
                     </div><!--/row-->
                 </div><!--/.col-xs-12.col-sm-9-->

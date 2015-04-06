@@ -53,30 +53,42 @@
                 </div>
                 <br>
                 <div>
-                    <h4>Agregar una nueva obra</h4>
                     <br>
                     <s:actionerror theme="bootstrap"/>
                     <s:if test="hasActionMessages()">
                         <s:actionmessage theme="bootstrap"/>
                     </s:if>
-                    <s:form class="form-vertical" theme="bootstrap" cssClass="form-vertical" method="post" action="Agregar_Obra" >
-                        <s:textfield name="isbn" id="isbn" label="%{getText('form.isbn')}" class="form-control" placeholder="ISBN" tooltip="%{getText('form.isbn')}"/>
-                        <s:textfield name="titulo" id="titulo" label="%{getText('form.title')}" class="form-control" placeholder="Título de la obra"/>
-                        <s:textfield name="subtitulo" id="subtitulo" label="%{getText('form.subtitle')}" class="form-control" placeholder="Subtítulo"/>
+                    <br>
+                    <h4><s:text name="manage.description"/></h4>
+                    <br>
+                    <s:form name="doc" class="form-vertical" theme="bootstrap" cssClass="form-vertical well" method="post" action="Agregar_Obra" >
+                        <s:textfield name="isbn" id="isbn" label="%{getText('form.isbn')}" class="form-control" placeholder="%{getText('form.isbn')}" tooltip="%{getText('form.isbn')}"/>
+                        <s:textfield name="titulo" id="titulo" label="%{getText('form.title')}" class="form-control" placeholder="%{getText('form.title')}"/>
+                        <s:textfield name="subtitulo" id="subtitulo" label="%{getText('form.subtitle')}" class="form-control" placeholder="%{getText('form.subtitle')}"/>
                         <s:select
-                        label="%{getText('form.language')}"
-                        list="{'English', 'German', 'Spanish'}"
-                        name="idioma"
-                        id="idioma" 
-                        class="form-control"
-                        emptyOption="true"
-                        headerKey="None"
-                        headerValue="None"/>
-                        <s:textfield name="nivel_mre" id="nivel_mre" label="%{getText('form.level')}" class="form-control" placeholder="Nivel"/>
-                        <s:textfield name="ruta_portada" id="ruta_portada" label="%{getText('form.path')}" class="form-control" placeholder="Ruta a la portada"/>
-                        <s:submit value="Agregar obra" class="btn btn-primary" cssClass="btn btn-primary" type="button"/>
+                            label="%{getText('form.language')}"
+                            list="{'English', 'German', 'Spanish'}"
+                            name="idioma"
+                            id="idioma" 
+                            class="form-control"
+                            emptyOption="true"
+                            headerKey="None"
+                            headerValue="None"
+                            placeholder="%{getText('form.language')}"/>
+                        <s:radio
+                            label="%{getText('form.level')}"
+                            id="nivel_mre"
+                            labelposition="inline"
+                            list="{'A1', 'A2', 'B1', 'B2', 'C1', 'C2','?'}"
+                            name="nivel_mre"/>
+                        <s:textfield name="ruta_portada" id="ruta_portada" label="%{getText('form.path')}" class="form-control" placeholder="%{getText('form.path')}"/>
+                        <br>
+                        <s:submit value="%{getText('form.add')}" class="btn btn-primary" cssClass="btn btn-primary" type="button" />
+
                     </s:form>
                     <hr>
+                    <br>
+                    <h4><s:text name="manage.table"/></h4>
                     <br>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover table-bordered">

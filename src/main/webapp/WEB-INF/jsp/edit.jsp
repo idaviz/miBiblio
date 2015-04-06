@@ -51,60 +51,40 @@
                     <p></p>
                 </div>
                 <br>
+                <s:actionerror theme="bootstrap"/>
                 <div>
-                    <h4>Modificar obra</h4>
+                    <h4><s:text name="edit.description" /></h4>
                     <br>
-                    <s:form class="form-horizontal" theme="bootstrap" method="post" action="Modificar_Obra">
-                        
+                    <s:form name="doc" class="form-vertical" theme="bootstrap" cssClass="form-vertical well" method="post" action="Modificar_Obra" >
                         <s:hidden name="id_tb_obra" id="id_tb_obra"/>
-                        
-                        <div class="form-group has-success">
-                            <label for="isbn" class="col-sm-2 control-label"><s:text name="form.isbn" /></label>
-                            <div class="col-sm-10">
-                                <s:textfield name="isbn" id="isbn" class="form-control" placeholder="ISBN"/>
-                            </div>
-                        </div>
-                        <div class="form-group has-success">
-                            <label for="titulo" class="col-sm-2 control-label"><s:text name="form.title" /></label>
-                            <div class="col-sm-10">
-                                <s:textfield name="titulo" id="titulo" class="form-control" placeholder="Título de la obra"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group has-success">
-                            <label for="subtitulo" class="col-sm-2 control-label"><s:text name="form.subtitle" /></label>
-                            <div class="col-sm-10">
-                                <s:textfield name="subtitulo" id="subtitulo" class="form-control" placeholder="Subtítulo"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group has-success">
-                            <label for="idioma" class="col-sm-2 control-label"><s:text name="form.language" /></label>
-                            <div class="col-sm-10">
-                                <s:textfield name="idioma" id="idioma" class="form-control" placeholder="Idioma"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group has-success">
-                            <label for="nivel_mre" class="col-sm-2 control-label"><s:text name="form.level" /></label>
-                            <div class="col-sm-10">
-                                <s:textfield name="nivel_mre" id="nivel_mre" class="form-control" placeholder="Nivel"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group has-success">
-                            <label for="ruta_portada" class="col-sm-2 control-label"><s:text name="form.path" /></label>
-                            <div class="col-sm-10">
-                                <s:textfield name="ruta_portada" id="ruta_portada" class="form-control" placeholder="Ruta a la portada"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <s:submit value="Guardar cambios" class="btn btn-primary" type="button"/>
-                            </div>
-                        </div>
-
+                        <s:textfield name="isbn" id="isbn" label="%{getText('form.isbn')}" class="form-control" placeholder="%{getText('form.isbn')}" tooltip="%{getText('form.isbn')}"/>
+                        <s:textfield name="titulo" id="titulo" label="%{getText('form.title')}" class="form-control" placeholder="%{getText('form.title')}"/>
+                        <s:textfield name="subtitulo" id="subtitulo" label="%{getText('form.subtitle')}" class="form-control" placeholder="%{getText('form.subtitle')}"/>
+                        <s:select
+                            label="%{getText('form.language')}"
+                            list="{'English', 'German', 'Spanish'}"
+                            name="idioma"
+                            id="idioma" 
+                            class="form-control"
+                            emptyOption="true"
+                            headerKey="None"
+                            headerValue="None"
+                            placeholder="%{getText('form.language')}"/>
+                        <s:radio
+                            label="%{getText('form.level')}"
+                            id="nivel_mre"
+                            labelposition="inline"
+                            list="{'A1', 'A2', 'B1', 'B2', 'C1', 'C2','?'}"
+                            name="nivel_mre"/>
+                        <s:textfield name="ruta_portada" id="ruta_portada" label="%{getText('form.path')}" class="form-control" placeholder="%{getText('form.path')}"/>
+                        <s:submit value="%{getText('form.save')}" class="btn btn-primary" cssClass="btn btn-primary" type="button" />
                     </s:form>
+                    <br>
+                    <s:url action="manage" var="manageInputLink" />
+                    <ul style="list-style: none;">
+                        <li class="pull-right"><a href="${manageInputLink}"><s:text name="freelink.backtomanage" /> <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a></li>
+                    </ul>
+                    <br>
                     <hr>
                 </div>  
                 <br>
