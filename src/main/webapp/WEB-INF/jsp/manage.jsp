@@ -14,7 +14,7 @@
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <sb:head includeScripts="false" includeScriptsValidation="false"/>
+        <sb:head includeScripts="true" includeScriptsValidation="true"/>
         <style type="text/css">
             body {
                 padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -33,6 +33,7 @@
     <body>
         <!-- Barra de navegación -->
         <%@ include file="/WEB-INF/jsp/inc/navbar.jsp" %>
+
         <div class="container">
             <!-- Soporte para internacionalización -->
             <s:url id="inventoryEN" namespace="/" action="locale" >
@@ -54,12 +55,17 @@
                 <div>
                     <h4>Agregar una nueva obra</h4>
                     <br>
+                    <s:actionerror theme="bootstrap"/>
+                    <s:if test="hasActionMessages()">
+                        <div class="welcome">
+                            <s:actionmessage/>
+                        </div>
+                    </s:if>
                     <s:form class="form-horizontal" theme="bootstrap" method="post" action="Agregar_Obra">
-                        
                         <div class="form-group">
                             <label for="isbn" class="col-sm-2 control-label"><s:text name="form.isbn" /></label>
                             <div class="col-sm-10">
-                                <s:textfield name="isbn" id="isbn" class="form-control" placeholder="ISBN"/>
+                                <s:textfield name="isbn" id="isbn" class="form-control" placeholder="ISBN" tooltip="ISBN"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -105,31 +111,33 @@
 
                     </s:form>
                     <hr>
-                    <br>  
-                    <table class="table table-striped table-hover table-bordered">
-                        <tr class="info">
-                            <th>Id</th>
-                            <th><s:text name="form.isbn" /></th>
-                            <th><s:text name="form.title" /></th>
-                            <th><s:text name="form.subtitle" /></th>
-                            <th><s:text name="form.language" /></th>
-                            <th><s:text name="form.level" /></th>
-                            <th><s:text name="form.modify" /></th>
-                            <th><s:text name="form.delete" /></th>
-                        </tr>
-                        <s:iterator value="listaObras"> 
-                            <tr>
-                                <td><s:property value="id_tb_obra"/></td>
-                                <td><s:property value="isbn"/></td>
-                                <td><s:property value="titulo"/></td>
-                                <td><s:property value="subtitulo"/></td>
-                                <td><s:property value="idioma"/></td>
-                                <td><s:property value="nivel_mre"/></td>
-                                <td><a href="Editar_Obra.action?id_tb_obra=${id_tb_obra}"/><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a></td>
-                                <td><a href="Eliminar_Obra.action?id_tb_obra=${id_tb_obra}"/><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+                    <br>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <tr class="info">
+                                <th>Id</th>
+                                <th><s:text name="form.isbn" /></th>
+                                <th><s:text name="form.title" /></th>
+                                <th><s:text name="form.subtitle" /></th>
+                                <th><s:text name="form.language" /></th>
+                                <th><s:text name="form.level" /></th>
+                                <th><s:text name="form.modify" /></th>
+                                <th><s:text name="form.delete" /></th>
                             </tr>
-                        </s:iterator>
-                    </table>
+                            <s:iterator value="listaObras"> 
+                                <tr>
+                                    <td><s:property value="id_tb_obra"/></td>
+                                    <td><s:property value="isbn"/></td>
+                                    <td><s:property value="titulo"/></td>
+                                    <td><s:property value="subtitulo"/></td>
+                                    <td><s:property value="idioma"/></td>
+                                    <td><s:property value="nivel_mre"/></td>
+                                    <td><a href="Editar_Obra.action?id_tb_obra=${id_tb_obra}"/><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a></td>
+                                    <td><a href="Eliminar_Obra.action?id_tb_obra=${id_tb_obra}"/><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+                                </tr>
+                            </s:iterator>
+                        </table>
+                    </div>
                 </div>  
                 <br>
                 <br>

@@ -10,25 +10,23 @@
     <constant name="struts.custom.i18n.resources" value="global" />
     
     <package name="mibiblio" extends="struts-default">
-        <!--
-        Esto hace que cualquier acción utilice Listado_Cliente como respuesta
-        <default-action-ref name="Listado_Cliente"/>
-        -->
-        
+       
         <!-- Interceptor -->
         <interceptors>
             <interceptor name="autenticacionInterceptor"
                          class="dgg.ucav.interceptores.AutenticacionInterceptor">
             </interceptor>
         </interceptors>
+        
         <!-- Página inicio para gestionar -->
-        <action name="manage" method="listado" class="dgg.ucav.dao.ObraAccion" >
+        <action name="manage" method="listado" class="dgg.ucav.acciones.ObraAccion" >
             <interceptor-ref name="createSession"/>
             <interceptor-ref name="defaultStack"/>
             <interceptor-ref name="autenticacionInterceptor"/>
             <result name="autenticacion">/WEB-INF/jsp/authentication.jsp</result>
             <result>/WEB-INF/jsp/manage.jsp</result>
         </action>
+        
         <!-- Poniendo en navbar.jsp un link a 'buscar'... se hace necesario autenticarse para acceder al menú buscar.
         <action name="buscar">
             <interceptor-ref name="createSession"/>
@@ -38,28 +36,28 @@
             <result>/WEB-INF/jsp/search.jsp</result>
         </action>
         -->        
+        
         <!-- CRUD Obra-->
-        <action name="Agregar_Obra" class="dgg.ucav.dao.ObraAccion" method="agregar">
+        <action name="Agregar_Obra" class="dgg.ucav.acciones.ObraAccion" method="agregar">
             <result name="input">/WEB-INF/jsp/manage.jsp</result>
             <result name="success" type="redirectAction">manage</result>
         </action>
         
-        <action name="Editar_Obra" class="dgg.ucav.dao.ObraAccion" method="editar">
+        <action name="Editar_Obra" class="dgg.ucav.acciones.ObraAccion" method="editar">
             <interceptor-ref name="paramsPrepareParamsStack"/>
             <result name="success">/WEB-INF/jsp/edit.jsp</result>
         </action>
         
-        <action name="Modificar_Obra" class="dgg.ucav.dao.ObraAccion" method="modificar">
+        <action name="Modificar_Obra" class="dgg.ucav.acciones.ObraAccion" method="modificar">
             
             <result name="input">/WEB-INF/jsp/edit.jsp</result>
             <result name="success" type="redirectAction">manage</result>
         </action>
         
-        <action name="Eliminar_Obra" class="dgg.ucav.dao.ObraAccion" method="eliminar">
+        <action name="Eliminar_Obra" class="dgg.ucav.acciones.ObraAccion" method="eliminar">
             <interceptor-ref name="paramsPrepareParamsStack"/>
             <result name="success" type="redirectAction">manage</result>
         </action>
-        
         <!-- Fin CRUD Obra-->
         
         <action name="Conectar" class="dgg.ucav.acciones.AutenticarAccion" method="conectar">
@@ -83,6 +81,7 @@
             <result>/WEB-INF/jsp/search.jsp</result>
         </action>
         <!-- Fin Acciones encadenadas -->
+        
         <action name="search.result" method="listadoResultado" class="dgg.ucav.acciones.BusquedaAccion">
             <result>/WEB-INF/jsp/search.result.jsp</result>
         </action>
@@ -91,7 +90,7 @@
         <action name="locale" class="dgg.ucav.mibiblio.locale.action.Locale" method="execute">
             <result name="success" type="chain">detail</result>
         </action>
-        <action name="detail" method="listado" class="dgg.ucav.dao.ObraAccion">
+        <action name="detail" method="listado" class="dgg.ucav.acciones.ObraAccion">
             <result>/WEB-INF/jsp/detail.jsp</result>
         </action>
         <!-- Fin Acciones encadenadas -->
@@ -101,10 +100,10 @@
         <action name="locale" class="dgg.ucav.mibiblio.locale.action.Locale" method="execute">
             <result name="success" type="chain">inventory</result>
         </action>
-        <action name="inventory" method="listado" class="dgg.ucav.dao.ObraAccion">
+        <action name="inventory" method="listado" class="dgg.ucav.acciones.ObraAccion">
             <result name="success" type="chain">novedades</result>
         </action>
-        <action name="novedades" method="novedades" class="dgg.ucav.dao.NovedadesAccion">
+        <action name="novedades" method="novedades" class="dgg.ucav.acciones.NovedadesAccion">
             <result>/WEB-INF/jsp/inventory.jsp</result>
         </action>
         <!-- Fin Acciones encadenadas -->
@@ -113,7 +112,7 @@
         <action name="locale" class="dgg.ucav.mibiblio.locale.action.Locale" method="execute">
             <result name="success" type="chain">index</result>
         </action>
-        <action name="index" method="novedades" class="dgg.ucav.dao.NovedadesAccion">
+        <action name="index" method="novedades" class="dgg.ucav.acciones.NovedadesAccion">
             <result>/WEB-INF/jsp/index.jsp</result>
         </action>
         <!-- Fin Acciones encadenadas -->

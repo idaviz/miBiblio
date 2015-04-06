@@ -1,7 +1,7 @@
 /*
  * 
  */
-package dgg.ucav.dao;
+package dgg.ucav.acciones;
 
 /**
  *
@@ -15,6 +15,9 @@ import com.opensymphony.xwork2.Preparable;
 import dgg.ucav.dao.javabeans.Obra;
 import dgg.ucav.dao.modelos.ModeloObraDAO;
 
+/**
+ * @author David
+ */
 @SuppressWarnings("serial")
 public class ObraAccion extends ActionSupport implements Preparable, ModelDriven {
 
@@ -38,6 +41,10 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
         }
     }
 
+    /**
+     * 
+     * @return Objeto Obra
+     */
     @Override
     public Object getModel() {
         return obra;
@@ -73,7 +80,6 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     // devolver la lista de clientes tras la recuperación 
     public String listado() {
         ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
-
         listaObras = (ArrayList<Obra>) ModeloObraDAO.getListaObras();
         return SUCCESS;
     }
@@ -81,10 +87,18 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     // Añadir, borrar y editar Obras
     // agregar el obra al modelo
     public String agregar() {
-        
-        ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
-        ModeloObraDAO.agregarObra(obra);
-        return SUCCESS;
+
+        if (this.obra.getIsbn().equals("")) {
+            System.out.println("Error en el isbn");
+            addFieldError("isbn", "ISBN no puede estar en blanco");
+            //addActionError("Se han encontrado errores en el campo ISBN");
+            return "input";
+        } else {
+            ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
+            ModeloObraDAO.agregarObra(obra);
+            addActionMessage("Obra añadida con éxito");
+            return "success";
+        }
     }
 
     // mostrar el formulario en edición
@@ -99,12 +113,12 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
         return SUCCESS;
     }
 
-      // eliminar una obra a partir del parámetro recibido llamado idObra
-
+    // eliminar una obra a partir del parámetro recibido llamado idObra
     public String eliminar() {
         ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
         ModeloObraDAO.eliminarObra(this.id_tb_obra);
-        System.out.println("en ObraAccion.eliminar() recibo id_tb_obra="+this.id_tb_obra);
+        addActionMessage("Obra eliminada con éxito");
         return SUCCESS;
     }
+            
 }

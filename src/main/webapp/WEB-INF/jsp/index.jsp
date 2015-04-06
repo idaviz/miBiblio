@@ -6,15 +6,15 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="keywords" content="struts2, twitter, bootstrap, plugin, showcase" />
-        <meta name="description" content="A Showcase for the Struts2 Bootstrap Plugin" />
+        <meta name="keywords" content="struts2, twitter, bootstrap, plugin, mibiblio" />
+        <meta name="description" content="miBiblio document repository" />
         <title><s:text name="index.title" /></title>
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <sb:head includeScripts="false" includeScriptsValidation="false"/>
+        <sb:head includeScripts="true" includeScriptsValidation="true"/>
         <style type="text/css">
             body {
                 padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */

@@ -1,7 +1,7 @@
 /*
  * 
  */
-package dgg.ucav.dao;
+package dgg.ucav.acciones;
 
 /**
  *
