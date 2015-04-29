@@ -22,7 +22,6 @@ public class GestionBaseDeDatos
                      { 
                             resultado.close(); 
                      }
-
                      catch(Exception e) 
                      { 
                             System.out.println("Error en el cierre de la conexión de un resultset"); 

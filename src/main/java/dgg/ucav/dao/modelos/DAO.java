@@ -11,6 +11,6 @@ import java.sql.Connection;
 
 public interface DAO {
 
-       // Definición del método a declarar en las clases de los usuarios 
+       // Definición del método a declarar en las clases 
        public Connection getConnection(); 
 }

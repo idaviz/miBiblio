@@ -24,9 +24,8 @@ ServletContextListener{
        @Override
        public void contextInitialized(ServletContextEvent servletContextEvent) 
        { 
-              ServletContext servletContext=servletContextEvent.getServletContext(); 
-              String dataSourceJNDI=servletContext.getInitParameter("dataSourceJNDI");
-
+             ServletContext servletContext=servletContextEvent.getServletContext(); 
+             String dataSourceJNDI=servletContext.getInitParameter("dataSourceJNDI");
               try 
               { 
                       context=new InitialContext(); 

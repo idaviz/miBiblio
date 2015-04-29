@@ -29,12 +29,13 @@ public class ModeloDAO implements DAO {
         Connection connection = null;
         if (dataSource != null) {
             try {
-                connection = dataSource.getConnection();
+                
+                    connection = dataSource.getConnection();
+                
             } catch (SQLException e) {
                 System.out.println(e);
             }
         }
-
         // devolver la conexión 
         return connection;
     }
