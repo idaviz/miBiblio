@@ -14,6 +14,9 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import dgg.ucav.dao.javabeans.Obra;
 import dgg.ucav.dao.modelos.ModeloObraDAO;
+import java.io.File;
+import javax.servlet.ServletContext;
+import org.apache.struts2.ServletActionContext;
 
 /**
  * @author David
@@ -30,7 +33,37 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     private String nivel_mre;
     private String ruta_portada;
     private String idioma;
+    private File miArchivo;
+    private String miArchivoFileName;
+    private String miArchivoContentType;
 
+    public File getMiArchivo() {
+        return miArchivo;
+    }
+
+    public void setMiArchivo(File miArchivo) {
+        this.miArchivo = miArchivo;
+    }
+
+    public String getMiArchivoFileName() {
+        return miArchivoFileName;
+    }
+
+    public void setMiArchivoFileName(String miArchivoFileName) {
+        this.miArchivoFileName = miArchivoFileName;
+    }
+
+    public String getMiArchivoContentType() {
+        return miArchivoContentType;
+    }
+
+    public void setMiArchivoContentType(String miArchivoContentType) {
+        this.miArchivoContentType = miArchivoContentType;
+    }
+
+   
+
+    
     public String getTitulo() {
         return titulo;
     }
@@ -152,6 +185,13 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
             addFieldError("subtitle", "El Subítulo debe contener entre 1 y 100 caracteres.");
             return "input";
         } else {
+            if(this.miArchivoFileName!=null){
+                obra.setImagen(this.miArchivoFileName);
+                ServletContext context = ServletActionContext.getServletContext();
+                String directorioImagenesObra=context.getRealPath("resources");
+                File almacenamientoImagen=new File(directorioImagenesObra,this.miArchivoFileName);
+                this.miArchivo.renameTo(almacenamientoImagen);
+            }
             ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
             ModeloObraDAO.agregarObra(obra);
             addActionMessage(this.obra.getTitulo() + ": " + getText("actionmessage.insert"));

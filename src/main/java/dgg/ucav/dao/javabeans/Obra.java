@@ -19,6 +19,7 @@ public class Obra {
     private String nivel_mre;
     private String ruta_portada;
     private Date fecha_insercion;
+    private String imagen;
 
     public Obra() {
     }
@@ -30,6 +31,26 @@ public class Obra {
         this.idioma = idioma;
         this.nivel_mre = nivel_mre;
         this.ruta_portada = ruta_portada;
+    }
+
+    public Obra(int id_tb_obra, String isbn, String titulo, String subtitulo, String idioma, String nivel_mre, String ruta_portada, Date fecha_insercion, String imagen) {
+        this.id_tb_obra = id_tb_obra;
+        this.isbn = isbn;
+        this.titulo = titulo;
+        this.subtitulo = subtitulo;
+        this.idioma = idioma;
+        this.nivel_mre = nivel_mre;
+        this.ruta_portada = ruta_portada;
+        this.fecha_insercion = fecha_insercion;
+        this.imagen = imagen;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public int getId_tb_obra() {

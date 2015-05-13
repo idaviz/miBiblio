@@ -61,7 +61,7 @@
                     <br>
                     <h4><s:text name="manage.description"/></h4>
                     <br>
-                    <s:form name="doc" class="form-vertical" theme="bootstrap" cssClass="form-vertical well" method="post" action="Agregar_Obra" >
+                    <s:form name="doc" class="form-vertical" theme="bootstrap" cssClass="form-vertical well" enctype="multipart/form-data" method="post" action="Agregar_Obra" >
                         <s:textfield name="isbn" id="isbn" label="%{getText('form.isbn')}" class="form-control" placeholder="%{getText('form.isbn')}" tooltip="%{getText('form.isbn')}"/>
                         <s:textfield name="titulo" id="titulo" label="%{getText('form.title')}" class="form-control" placeholder="%{getText('form.title')}"/>
                         <s:textfield name="subtitulo" id="subtitulo" label="%{getText('form.subtitle')}" class="form-control" placeholder="%{getText('form.subtitle')}"/>
@@ -82,6 +82,7 @@
                             list="{'A1', 'A2', 'B1', 'B2', 'C1', 'C2','?'}"
                             name="nivel_mre"/>
                         <s:textfield name="ruta_portada" id="ruta_portada" label="%{getText('form.path')}" class="form-control" placeholder="%{getText('form.path')}"/>
+                        <s:file name="miArchivo" id="miArchivo" label="File" class="form-control"/>
                         <br>
                         <s:submit value="%{getText('form.add')}" class="btn btn-primary" cssClass="btn btn-primary" type="button" />
 

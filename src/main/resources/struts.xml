@@ -46,6 +46,10 @@
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
             </interceptor-ref>
+            <interceptor-ref name="fileUpload">
+                <param name="allowedTypes">image/gif,image/jpeg,image/png</param>
+            </interceptor-ref>
+           
             <result name="input">/WEB-INF/jsp/manage.jsp</result>
             <result name="success" type="redirectAction">manage</result>
         </action>
