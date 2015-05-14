@@ -15,7 +15,9 @@ import com.opensymphony.xwork2.Preparable;
 import dgg.ucav.dao.javabeans.Obra;
 import dgg.ucav.dao.modelos.ModeloObraDAO;
 import java.io.File;
+import java.io.IOException;
 import javax.servlet.ServletContext;
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
 /**
@@ -33,36 +35,33 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
     private String nivel_mre;
     private String ruta_portada;
     private String idioma;
-    private File miArchivo;
-    private String miArchivoFileName;
-    private String miArchivoContentType;
+    private File imagen;
+    private String imagenFileName;
+    private String imagenContentType;
 
-    public File getMiArchivo() {
-        return miArchivo;
+    public File getImagen() {
+        return imagen;
     }
 
-    public void setMiArchivo(File miArchivo) {
-        this.miArchivo = miArchivo;
+    public void setImagen(File imagen) {
+        this.imagen = imagen;
     }
-
-    public String getMiArchivoFileName() {
-        return miArchivoFileName;
-    }
-
-    public void setMiArchivoFileName(String miArchivoFileName) {
-        this.miArchivoFileName = miArchivoFileName;
-    }
-
-    public String getMiArchivoContentType() {
-        return miArchivoContentType;
-    }
-
-    public void setMiArchivoContentType(String miArchivoContentType) {
-        this.miArchivoContentType = miArchivoContentType;
-    }
-
    
+    public String getImagenFileName() {
+        return imagenFileName;
+    }
 
+    public void setImagenFileName(String imagenFileName) {
+        this.imagenFileName = imagenFileName;
+    }
+
+    public String getImagenContentType() {
+        return imagenContentType;
+    }
+
+    public void setImagenContentType(String imagenContentType) {
+        this.imagenContentType = imagenContentType;
+    }
     
     public String getTitulo() {
         return titulo;
@@ -173,7 +172,7 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
 
     // Añadir, borrar y editar Obras
     // agregar el obra al modelo
-    public String agregar() {
+    public String agregar() throws IOException {
 
         if (this.obra.getIsbn().equals("") || this.obra.getIsbn().length() < 1 || this.obra.getIsbn().length() > 50) {
             addFieldError("isbn", "ISBN debe contener entre 1 y 50 caracteres");
@@ -185,15 +184,16 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
             addFieldError("subtitle", "El Subítulo debe contener entre 1 y 100 caracteres.");
             return "input";
         } else {
-            if(this.miArchivoFileName!=null){
-                obra.setImagen(this.miArchivoFileName);
-                ServletContext context = ServletActionContext.getServletContext();
-                String directorioImagenesObra=context.getRealPath("resources");
-                File almacenamientoImagen=new File(directorioImagenesObra,this.miArchivoFileName);
-                this.miArchivo.renameTo(almacenamientoImagen);
-            }
+            System.out.println("Nombre de la imagen: "+this.imagenFileName);
+            ServletContext context=ServletActionContext.getServletContext();
+            String directorioServidor=context.getRealPath("/");
+            directorioServidor=directorioServidor+"\\resources";
+            System.out.println("Directorio servidor: "+directorioServidor);
+            File nuevaImagen = new File(directorioServidor,this.imagenFileName);
+            FileUtils.copyFile(imagen,nuevaImagen);
+            this.obra.setRuta_portada(this.imagenFileName);
             ModeloObraDAO ModeloObraDAO = new ModeloObraDAO();
-            ModeloObraDAO.agregarObra(obra);
+            ModeloObraDAO.agregarObra(this.obra);
             addActionMessage(this.obra.getTitulo() + ": " + getText("actionmessage.insert"));
             return SUCCESS;
         }

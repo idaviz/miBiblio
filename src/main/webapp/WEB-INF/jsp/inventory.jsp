@@ -62,7 +62,7 @@
                     <div class="media">
                         <div class="media-left media-top">
                             <a href="#">
-                                <img class="media-object" src="./resources/<s:property value="ruta_portada"/>" alt="imagen">
+                                <img height="100" width="75" class="media-object" src="./resources/<s:property value="ruta_portada"/>" alt="imagen">
                             </a>
                         </div>
                         <div class="media-body">

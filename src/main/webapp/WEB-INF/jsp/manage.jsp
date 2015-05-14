@@ -81,8 +81,8 @@
                             labelposition="inline"
                             list="{'A1', 'A2', 'B1', 'B2', 'C1', 'C2','?'}"
                             name="nivel_mre"/>
-                        <s:textfield name="ruta_portada" id="ruta_portada" label="%{getText('form.path')}" class="form-control" placeholder="%{getText('form.path')}"/>
-                        <s:file name="miArchivo" id="miArchivo" label="File" class="form-control"/>
+                    <!--    <s:textfield  name="ruta_portada" id="ruta_portada" label="%{getText('form.path')}" class="form-control" placeholder="%{getText('form.path')}"/> -->
+                        <s:file name="imagen" id="imagen" label="File" class="form-control"/>
                         <br>
                         <s:submit value="%{getText('form.add')}" class="btn btn-primary" cssClass="btn btn-primary" type="button" />
 
@@ -117,7 +117,7 @@
                             </s:iterator>
                         </table>
                     </div>
-                </div>  
+                </div>
                 <br>
                 <br>
                 <%@ include file="/WEB-INF/jsp/inc/footer.jsp" %>

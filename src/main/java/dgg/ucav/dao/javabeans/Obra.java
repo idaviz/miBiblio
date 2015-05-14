@@ -3,6 +3,7 @@
  */
 package dgg.ucav.dao.javabeans;
 
+import java.io.File;
 import java.util.Date;
 
 /**
@@ -19,7 +20,7 @@ public class Obra {
     private String nivel_mre;
     private String ruta_portada;
     private Date fecha_insercion;
-    private String imagen;
+    private File imagen;
 
     public Obra() {
     }
@@ -33,7 +34,7 @@ public class Obra {
         this.ruta_portada = ruta_portada;
     }
 
-    public Obra(int id_tb_obra, String isbn, String titulo, String subtitulo, String idioma, String nivel_mre, String ruta_portada, Date fecha_insercion, String imagen) {
+    public Obra(int id_tb_obra, String isbn, String titulo, String subtitulo, String idioma, String nivel_mre, String ruta_portada, Date fecha_insercion, File imagen) {
         this.id_tb_obra = id_tb_obra;
         this.isbn = isbn;
         this.titulo = titulo;
@@ -45,11 +46,11 @@ public class Obra {
         this.imagen = imagen;
     }
 
-    public String getImagen() {
+    public File getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(File imagen) {
         this.imagen = imagen;
     }
 

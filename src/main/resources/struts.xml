@@ -8,6 +8,7 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
     <constant name="struts.devMode" value="true" />
     <constant name="struts.custom.i18n.resources" value="global" />
+    <constant name="struts.multipart.saveDir" value="./resources" />
     
     <package name="mibiblio" extends="struts-default">
        
@@ -42,14 +43,13 @@
         
         <!-- CRUD Obra-->
         <action name="Agregar_Obra" class="dgg.ucav.acciones.ObraAccion" method="agregar">
+           <interceptor-ref name="fileUpload"/>
             <interceptor-ref name="paramsPrepareParamsStack"/> 
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
             </interceptor-ref>
-            <interceptor-ref name="fileUpload">
-                <param name="allowedTypes">image/gif,image/jpeg,image/png</param>
-            </interceptor-ref>
-           
+            
+            
             <result name="input">/WEB-INF/jsp/manage.jsp</result>
             <result name="success" type="redirectAction">manage</result>
         </action>
