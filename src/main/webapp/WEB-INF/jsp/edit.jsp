@@ -55,7 +55,7 @@
                 <div>
                     <h4><s:text name="edit.description" /></h4>
                     <br>
-                    <s:form name="doc" class="form-vertical" theme="bootstrap" cssClass="form-vertical well" method="post" action="Modificar_Obra" >
+                    <s:form acceptcharset="UTF-8" name="doc" class="form-vertical" theme="bootstrap" cssClass="form-vertical well" method="post" action="Modificar_Obra" >
                         <s:hidden name="id_tb_obra" id="id_tb_obra"/>
                         <s:textfield name="isbn" id="isbn" label="%{getText('form.isbn')}" class="form-control" placeholder="%{getText('form.isbn')}" tooltip="%{getText('form.isbn')}"/>
                         <s:textfield name="titulo" id="titulo" label="%{getText('form.title')}" class="form-control" placeholder="%{getText('form.title')}"/>

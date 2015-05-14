@@ -56,7 +56,7 @@
                 <br>
                 <div>
                     <h4><s:text name="search.text" /></h4><br/>
-                    <s:form theme="bootstrap" method="POST" action="search.result">
+                    <s:form acceptcharset="UTF-8" theme="bootstrap" method="POST" action="search.result">
                         <div class="input-group">
                             <span class="input-group-btn">
                                 <s:submit value="buscar" class="btn btn-primary" type="button"/>
