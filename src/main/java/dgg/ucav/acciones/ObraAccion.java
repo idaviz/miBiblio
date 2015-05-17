@@ -184,11 +184,9 @@ public class ObraAccion extends ActionSupport implements Preparable, ModelDriven
             addFieldError("subtitle", "El Subítulo debe contener entre 1 y 100 caracteres.");
             return "input";
         } else {
-            System.out.println("Nombre de la imagen: "+this.imagenFileName);
             ServletContext context=ServletActionContext.getServletContext();
             String directorioServidor=context.getRealPath("/");
             directorioServidor=directorioServidor+"\\resources";
-            System.out.println("Directorio servidor: "+directorioServidor);
             File nuevaImagen = new File(directorioServidor,this.imagenFileName);
             FileUtils.copyFile(imagen,nuevaImagen);
             this.obra.setRuta_portada(this.imagenFileName);

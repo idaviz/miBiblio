@@ -262,7 +262,6 @@ public class ModeloObraDAO extends ModeloDAO {
             conexion = super.getConnection();
             // Creación de la consulta
             consultaString = "INSERT INTO tb_obra (isbn, titulo, subtitulo, idioma, nivel_mre, ruta_portada) VALUES (?,?,?,?,?,?)";
-     
             // Preparación de la consulta
             consulta=conexion.prepareStatement(consultaString);
             consulta.setString(1, obra.getIsbn());

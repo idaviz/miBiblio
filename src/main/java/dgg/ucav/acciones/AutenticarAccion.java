@@ -66,14 +66,6 @@ public class AutenticarAccion extends ActionSupport implements SessionAware {
     }
 
     /**
-     * descriptores de acceso ... el que funciona con dgarcia/dgarcia public
-     * String xconectar(){ // verificar si el identificador y la contraseña son
-     * correctos if (usuario != null && contrasena != null) { if
-     * (usuario.equals(usuarioPredeterminado) &&
-     * contrasena.equals(contrasenaPredeterminada)) { // autenticación
-     * correcta,guardar el valor en la sesión System.out.println("usuario y
-     * contraseña correctos!"); this.sessionMap.put("autenticacion", true);
-     * return SUCCESS; } } return INPUT; }
     *
      */
     public String desconectar() {

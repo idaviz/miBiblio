@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="struts2, twitter, bootstrap, plugin, showcase" />
         <meta name="description" content="A Showcase for the Struts2 Bootstrap Plugin" />
-        <title><s:text name="search.title" /></title>
+        <title><s:text name="detail.title" /></title>
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
@@ -35,6 +35,7 @@
         <%@ include file="/WEB-INF/jsp/inc/navbar.jsp" %>
 
         <div class="container">
+
             <!-- Soporte para internacionalización -->
             <s:url id="inventoryEN" namespace="/" action="locale" >
                 <s:param name="request_locale" >en</s:param>
@@ -42,46 +43,27 @@
             <s:url id="inventoryES" namespace="/" action="locale" >
                 <s:param name="request_locale" >es</s:param>
             </s:url>
-            <!-- Fin soporte para internacionalización -->            
+            <!-- Fin soporte para internacionalización -->
+
             <div class="col-xs-12 col-sm-9">
                 <p class="pull-right visible-xs">
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                 </p>
                 <div class="jumbotron">
-                    <h1><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <s:text name="authentication.title" /></h1>
+                    <h1><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;&nbsp;<s:text name="menu.aboutus" /></h1>
                     <p></p>
                 </div>
                 <br>
-                <div>
-                    <h4><s:text name="authentication.text" /></h4><br/>
-                    <s:form class="form-horizontal" theme="bootstrap" method="post" action="Conectar">
-                            <div class="form-group">
-                                <label for="usuario" class="col-sm-2 control-label"><s:text name="form.user" /></label>
-                                <div class="col-sm-10">
-                                    <s:textfield name="usuario" id="usuario" class="form-control" placeholder="Su usuario"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="contrasena" class="col-sm-2 control-label"><s:text name="form.password" /></label>
-                                <div class="col-sm-10">
-                                    <s:password name="contrasena" id="contrasena" class="form-control" placeholder="Su contraseña"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <s:submit value="Confirmar" class="btn btn-primary" type="button"/>
-                                </div>
-                            </div>
-                    </s:form>
-                </div>
+                <h2><s:text name="menu.aboutus" /></h2>    
+                <p>
+                    <strong>miBiblio</strong> es fruto de un proyecto para la asignatura Desarrollo de Aplicaciones Web II, de la Universidad Católica de Ávila y perteneciente al Grado en Sistemas de la Información.
+                </p>
+                <p>
+                    La plataforma está desarrollada íntegramente con tecnología JEE 7 y el framework de desarrollo Struts2.
+                </p>
+
                 <br>
-                <br>
-                <!-- Tabla de resultados -->
+
                 <%@ include file="/WEB-INF/jsp/inc/footer.jsp" %>
             </div>
         </div>

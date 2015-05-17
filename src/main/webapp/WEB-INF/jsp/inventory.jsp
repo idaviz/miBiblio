@@ -77,7 +77,7 @@
                                     <s:param name="idioma" value="idioma"/>
                                     <s:param name="nivel_mre" value="nivel_mre"/>                                    
                                 </s:url>
-                            <a href="${detailInputLink}">ver detalle</a>
+                            <a href="${detailInputLink}"><s:text name="more.title" /></a>
                         </div>
                     </div>
                     <br>
